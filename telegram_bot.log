@@ -1,0 +1,674 @@
+2025-07-31 23:25:10,610 - INFO - Connecting to 149.154.167.51:443/TcpFull...
+2025-07-31 23:25:10,724 - INFO - Connection to 149.154.167.51:443/TcpFull complete!
+2025-07-31 23:25:10,825 - INFO - System clock is wrong, set time offset to -197s
+2025-07-31 23:25:10,930 - WARNING - Server resent the older message 7533312996513987585, ignoring
+2025-07-31 23:25:11,918 - INFO - Telegramga muvaffaqiyatli ulandik!
+2025-07-31 23:25:22,388 - INFO - 127 ta post olindi, keyingi min_id: 5392
+2025-07-31 23:25:22,388 - INFO - Ish vaqti emas. 60 soniya kutilyapti...
+2025-07-31 23:25:33,038 - INFO - Connecting to 149.154.167.51:443/TcpFull...
+2025-07-31 23:25:33,139 - INFO - Connection to 149.154.167.51:443/TcpFull complete!
+2025-07-31 23:25:33,243 - INFO - System clock is wrong, set time offset to -197s
+2025-07-31 23:25:33,387 - WARNING - Server resent the older message 7533313092802429953, ignoring
+2025-07-31 23:25:34,122 - INFO - Telegramga muvaffaqiyatli ulandik!
+2025-07-31 23:25:44,465 - INFO - 127 ta post olindi, keyingi min_id: 5392
+2025-07-31 23:25:44,465 - INFO - Ish vaqti emas. 60 soniya kutilyapti...
+2025-07-31 23:26:46,047 - INFO - Connecting to 149.154.167.51:443/TcpFull...
+2025-07-31 23:26:46,161 - INFO - Connection to 149.154.167.51:443/TcpFull complete!
+2025-07-31 23:26:46,278 - INFO - System clock is wrong, set time offset to -197s
+2025-07-31 23:26:46,380 - WARNING - Server resent the older message 7533313406462586881, ignoring
+2025-07-31 23:26:47,144 - INFO - Telegramga muvaffaqiyatli ulandik!
+2025-07-31 23:26:57,533 - INFO - 127 ta post olindi, keyingi min_id: 5392
+2025-07-31 23:26:57,533 - INFO - Ish vaqti emas. 60 soniya kutilyapti...
+2025-07-31 23:27:34,144 - INFO - Connecting to 149.154.167.51:443/TcpFull...
+2025-07-31 23:27:34,295 - INFO - Connection to 149.154.167.51:443/TcpFull complete!
+2025-07-31 23:27:34,402 - INFO - System clock is wrong, set time offset to -197s
+2025-07-31 23:27:34,506 - WARNING - Server resent the older message 7533313613163150337, ignoring
+2025-07-31 23:27:35,197 - INFO - Telegramga muvaffaqiyatli ulandik!
+2025-07-31 23:27:45,559 - INFO - 127 ta post olindi, keyingi min_id: 5392
+2025-07-31 23:27:45,559 - INFO - Ish vaqti emas. 60 soniya kutilyapti...
+2025-07-31 23:27:57,119 - INFO - Connecting to 149.154.167.51:443/TcpFull...
+2025-07-31 23:27:57,220 - INFO - Connection to 149.154.167.51:443/TcpFull complete!
+2025-07-31 23:27:57,327 - INFO - System clock is wrong, set time offset to -197s
+2025-07-31 23:27:58,112 - INFO - Telegramga muvaffaqiyatli ulandik!
+2025-07-31 23:28:08,442 - INFO - 127 ta post olindi, keyingi min_id: 5392
+2025-07-31 23:28:09,112 - INFO - Admin guruh topildi: НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ
+2025-07-31 23:28:09,112 - INFO - Admin guruh topildi: NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI"
+2025-07-31 23:28:09,112 - INFO - Admin guruh topildi: НАВОИЙ УЙ САВДО
+2025-07-31 23:28:09,240 - ERROR - Qo‘shimcha guruhda xato: Navoiy_uy_joy_kvartira_bozori - No user has "navoiy_uy_joy_kvartira_bozori" as username
+2025-07-31 23:28:09,352 - INFO - Qo‘shimcha guruh qo‘shildi: NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI"
+2025-07-31 23:28:09,352 - INFO - ⬇️ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborish boshlandi...
+2025-07-31 23:28:09,467 - ERROR - НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga forwardda xato: The specified message ID is invalid or you can't do that operation on such message (caused by ForwardMessagesRequest)
+2025-07-31 23:28:09,675 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [6]
+2025-07-31 23:28:10,790 - INFO - Got difference for channel 2477123839 updates
+2025-07-31 23:28:11,802 - INFO - Got difference for channel 2477123839 updates
+2025-07-31 23:28:19,870 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4459]
+2025-07-31 23:28:20,364 - INFO - Disconnecting from 149.154.167.51:443/TcpFull...
+2025-07-31 23:28:20,364 - INFO - Disconnection from 149.154.167.51:443/TcpFull complete!
+2025-07-31 23:29:24,171 - INFO - Connecting to 149.154.167.51:443/TcpFull...
+2025-07-31 23:29:24,275 - INFO - Connection to 149.154.167.51:443/TcpFull complete!
+2025-07-31 23:29:24,377 - INFO - System clock is wrong, set time offset to -197s
+2025-07-31 23:29:24,479 - WARNING - Server resent the older message 7533314085488963585, ignoring
+2025-07-31 23:29:29,072 - INFO - Connecting to 149.154.167.51:443/TcpFull...
+2025-07-31 23:29:29,173 - INFO - Connection to 149.154.167.51:443/TcpFull complete!
+2025-07-31 23:29:29,292 - INFO - System clock is wrong, set time offset to -197s
+2025-07-31 23:29:29,396 - WARNING - Server resent the older message 7533314106598427649, ignoring
+2025-07-31 23:29:30,110 - INFO - Telegramga muvaffaqiyatli ulandik!
+2025-07-31 23:29:40,468 - INFO - 127 ta post olindi, keyingi min_id: 5392
+2025-07-31 23:29:41,073 - INFO - Admin guruh topildi: НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ
+2025-07-31 23:29:41,073 - INFO - Admin guruh topildi: NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI"
+2025-07-31 23:29:41,073 - INFO - Admin guruh topildi: НАВОИЙ УЙ САВДО
+2025-07-31 23:29:41,208 - ERROR - Qo‘shimcha guruhda xato: Navoiy_uy_joy_kvartira_bozori - No user has "navoiy_uy_joy_kvartira_bozori" as username
+2025-07-31 23:29:41,370 - INFO - Qo‘shimcha guruh qo‘shildi: NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI"
+2025-07-31 23:29:41,371 - INFO - ⬇️ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborish boshlandi...
+2025-07-31 23:29:41,565 - ERROR - НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga forwardda xato: The specified message ID is invalid or you can't do that operation on such message (caused by ForwardMessagesRequest)
+2025-07-31 23:29:41,806 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [6]
+2025-07-31 23:29:52,028 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4459]
+2025-07-31 23:29:52,676 - INFO - Got difference for channel 2477123839 updates
+2025-07-31 23:30:02,266 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4465]
+2025-07-31 23:30:12,376 - INFO - Connecting to 149.154.167.51:443/TcpFull...
+2025-07-31 23:30:14,186 - INFO - Connection to 149.154.167.51:443/TcpFull complete!
+2025-07-31 23:31:02,138 - INFO - Connecting to 149.154.167.51:443/TcpFull...
+2025-07-31 23:31:02,274 - INFO - Connection to 149.154.167.51:443/TcpFull complete!
+2025-07-31 23:31:02,377 - INFO - System clock is wrong, set time offset to -197s
+2025-07-31 23:31:02,478 - WARNING - Server resent the older message 7533314506397374465, ignoring
+2025-07-31 23:31:03,148 - ERROR - Telegramga ulanishda xato: [WinError 32] Процесс не может получить доступ к файлу, так как этот файл занят другим процессом: 'session_name.session'
+2025-07-31 23:31:03,148 - INFO - Disconnecting from 149.154.167.51:443/TcpFull...
+2025-07-31 23:31:03,148 - INFO - Disconnection from 149.154.167.51:443/TcpFull complete!
+2025-07-31 23:32:11,000 - INFO - Connecting to 149.154.167.51:443/TcpFull...
+2025-07-31 23:32:11,099 - INFO - Connection to 149.154.167.51:443/TcpFull complete!
+2025-07-31 23:32:11,292 - INFO - System clock is wrong, set time offset to -197s
+2025-07-31 23:32:12,516 - INFO - Telegramga muvaffaqiyatli ulandik!
+2025-07-31 23:32:22,811 - INFO - 127 ta post olindi, keyingi min_id: 5392
+2025-07-31 23:32:23,455 - INFO - Admin guruh topildi: НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ
+2025-07-31 23:32:23,455 - INFO - Admin guruh topildi: NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI"
+2025-07-31 23:32:23,455 - INFO - Admin guruh topildi: НАВОИЙ УЙ САВДО
+2025-07-31 23:32:23,595 - ERROR - Qo‘shimcha guruhda xato: Navoiy_uy_joy_kvartira_bozori - No user has "navoiy_uy_joy_kvartira_bozori" as username
+2025-07-31 23:32:23,706 - INFO - Qo‘shimcha guruh qo‘shildi: NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI"
+2025-07-31 23:32:23,706 - INFO - ⬇️ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborish boshlandi...
+2025-07-31 23:32:23,825 - ERROR - НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga forwardda xato: The specified message ID is invalid or you can't do that operation on such message (caused by ForwardMessagesRequest)
+2025-07-31 23:32:24,104 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [6]
+2025-07-31 23:32:34,467 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4459]
+2025-07-31 23:32:44,681 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4465]
+2025-07-31 23:32:55,111 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4466]
+2025-07-31 23:33:05,343 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4477]
+2025-07-31 23:33:15,533 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4587]
+2025-07-31 23:33:25,784 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4660]
+2025-07-31 23:33:35,990 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4744]
+2025-07-31 23:33:46,215 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5023]
+2025-07-31 23:33:56,460 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5059]
+2025-07-31 23:34:06,827 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5322]
+2025-07-31 23:34:17,145 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5323]
+2025-07-31 23:34:27,440 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4397, 4396]
+2025-07-31 23:34:37,941 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4407, 4406, 4405, 4404, 4403, 4402, 4401, 4400, 4399]
+2025-07-31 23:34:48,395 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4413, 4412, 4411, 4410, 4409, 4408]
+2025-07-31 23:34:58,716 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4418, 4417, 4416, 4415, 4414]
+2025-07-31 23:35:09,088 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4424, 4423, 4422, 4421, 4420, 4419]
+2025-07-31 23:35:19,569 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4432, 4431, 4430, 4429, 4428, 4427, 4426, 4425]
+2025-07-31 23:35:30,141 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4442, 4441, 4440, 4439, 4438, 4437, 4436, 4435, 4434, 4433]
+2025-07-31 23:35:40,708 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4452, 4451, 4450, 4449, 4448, 4447, 4446, 4445, 4444, 4443]
+2025-07-31 23:35:51,072 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4458, 4457, 4456, 4455, 4454, 4453]
+2025-07-31 23:36:01,494 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4464, 4463, 4462, 4461, 4460]
+2025-07-31 23:36:12,002 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4476, 4475, 4474, 4473, 4472, 4471, 4470, 4469, 4468, 4467]
+2025-07-31 23:36:22,992 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4486, 4485, 4484, 4483, 4482, 4481, 4480, 4479, 4478]
+2025-07-31 23:36:33,513 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4496, 4495, 4494, 4493, 4492, 4491, 4490, 4489, 4488, 4487]
+2025-07-31 23:36:43,982 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4504, 4503, 4502, 4501, 4500, 4499, 4498, 4497]
+2025-07-31 23:36:54,667 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4514, 4513, 4512, 4511, 4510, 4509, 4508, 4507, 4506, 4505]
+2025-07-31 23:37:05,114 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4520, 4519, 4518, 4517, 4516, 4515]
+2025-07-31 23:37:16,700 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4537, 4536, 4535, 4534, 4533, 4532, 4531, 4530]
+2025-07-31 23:37:27,239 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4545, 4544, 4543, 4542, 4541, 4540, 4539, 4538]
+2025-07-31 23:37:37,820 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4554, 4553, 4552, 4551, 4550, 4549, 4548, 4547, 4546]
+2025-07-31 23:37:48,322 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4564, 4563, 4562, 4561, 4560, 4559, 4558, 4557, 4556, 4555]
+2025-07-31 23:37:58,848 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4573, 4572, 4571, 4570, 4569, 4568, 4567, 4566, 4565]
+2025-07-31 23:38:09,851 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4583, 4582, 4581, 4580, 4579, 4578, 4577, 4576, 4575, 4574]
+2025-07-31 23:38:20,249 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4586, 4585, 4584]
+2025-07-31 23:38:30,791 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4597, 4596, 4595, 4594, 4593, 4592, 4591, 4590, 4589, 4588]
+2025-07-31 23:38:41,333 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4606, 4605, 4604, 4603, 4602, 4601, 4600, 4599, 4598]
+2025-07-31 23:38:51,782 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4615, 4614, 4613, 4612, 4611, 4610, 4609, 4608, 4607]
+2025-07-31 23:39:02,152 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4621, 4620, 4619, 4618, 4617, 4616]
+2025-07-31 23:39:12,609 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4630, 4629, 4628, 4627, 4626, 4625, 4624, 4623, 4622]
+2025-07-31 23:39:23,121 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4640, 4639, 4638, 4637, 4636, 4635, 4634, 4633, 4632, 4631]
+2025-07-31 23:39:33,589 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4648, 4647, 4646, 4645, 4644, 4643, 4642, 4641]
+2025-07-31 23:39:44,323 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4655, 4654, 4653, 4652, 4651, 4650, 4649]
+2025-07-31 23:39:54,659 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4659, 4658, 4657, 4656]
+2025-07-31 23:40:05,110 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4665, 4664, 4663, 4662, 4661]
+2025-07-31 23:40:15,505 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4673, 4672, 4671, 4670, 4669, 4668, 4667]
+2025-07-31 23:40:25,930 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4681, 4680, 4679, 4678, 4677, 4676, 4675, 4674]
+2025-07-31 23:40:36,608 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4689, 4688, 4687, 4686, 4685, 4684, 4683, 4682]
+2025-07-31 23:40:47,050 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4699, 4698, 4697, 4696, 4695, 4694, 4693, 4692, 4691, 4690]
+2025-07-31 23:40:57,495 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4707, 4706, 4705, 4704, 4703, 4702, 4701, 4700]
+2025-07-31 23:41:08,049 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4715, 4714, 4713, 4712, 4711, 4710, 4709, 4708]
+2025-07-31 23:41:18,484 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4721, 4720, 4719, 4718, 4717, 4716]
+2025-07-31 23:41:28,893 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4730, 4729, 4728, 4727, 4726, 4725, 4724, 4723, 4722]
+2025-07-31 23:41:39,330 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4736, 4735, 4734, 4733, 4732, 4731]
+2025-07-31 23:41:49,714 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4743, 4742, 4741, 4740, 4739, 4738, 4737]
+2025-07-31 23:42:00,257 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4753, 4752, 4751, 4750, 4749, 4748, 4747, 4746, 4745]
+2025-07-31 23:42:10,858 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4763, 4762, 4761, 4760, 4759, 4758, 4757, 4756, 4755, 4754]
+2025-07-31 23:42:21,304 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4772, 4771, 4770, 4769, 4768, 4767, 4766, 4765, 4764]
+2025-07-31 23:42:31,678 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4778, 4777, 4776, 4775, 4774, 4773]
+2025-07-31 23:42:42,018 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4783, 4782, 4781, 4780, 4779]
+2025-07-31 23:42:52,629 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4793, 4792, 4791, 4790, 4789, 4788, 4787, 4786, 4785, 4784]
+2025-07-31 23:43:03,125 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4802, 4801, 4800, 4799, 4798, 4797, 4796, 4795, 4794]
+2025-07-31 23:43:13,629 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4811, 4810, 4809, 4808, 4807, 4806, 4805, 4804, 4803]
+2025-07-31 23:43:24,260 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4821, 4820, 4819, 4818, 4817, 4816, 4815, 4814, 4813, 4812]
+2025-07-31 23:43:34,716 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4830, 4829, 4828, 4827, 4826, 4825, 4824, 4823, 4822]
+2025-07-31 23:43:45,171 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4839, 4838, 4837, 4836, 4835, 4834, 4833, 4832, 4831]
+2025-07-31 23:43:55,651 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4846, 4845, 4844, 4843, 4842, 4841, 4840]
+2025-07-31 23:44:06,169 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4856, 4855, 4854, 4853, 4852, 4851, 4850, 4849, 4848, 4847]
+2025-07-31 23:44:16,626 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4865, 4864, 4863, 4862, 4861, 4860, 4859, 4858, 4857]
+2025-07-31 23:44:27,084 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4874, 4873, 4872, 4871, 4870, 4869, 4868, 4867, 4866]
+2025-07-31 23:44:37,636 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4884, 4883, 4882, 4881, 4880, 4879, 4878, 4877, 4876, 4875]
+2025-07-31 23:44:48,053 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4894, 4893, 4892, 4891, 4890, 4889, 4888, 4887, 4886, 4885]
+2025-07-31 23:44:58,494 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4904, 4903, 4902, 4901, 4900, 4899, 4898, 4897, 4896, 4895]
+2025-07-31 23:45:08,916 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4913, 4912, 4911, 4910, 4909, 4908, 4907, 4906, 4905]
+2025-07-31 23:45:19,379 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4922, 4921, 4920, 4919, 4918, 4917, 4916, 4915, 4914]
+2025-07-31 23:45:30,036 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4934, 4933, 4932, 4931, 4930, 4929, 4928]
+2025-07-31 23:45:40,475 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4944, 4943, 4942, 4941, 4940, 4939, 4938, 4937, 4936, 4935]
+2025-07-31 23:45:50,920 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4969, 4968, 4967, 4966, 4965, 4964, 4963, 4962]
+2025-07-31 23:46:01,402 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4979, 4978, 4977, 4976, 4975, 4974, 4973, 4972, 4971, 4970]
+2025-07-31 23:46:11,860 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4987, 4986, 4985, 4984, 4983, 4982, 4981, 4980]
+2025-07-31 23:46:22,445 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [4997, 4996, 4995, 4994, 4993, 4992, 4991, 4990, 4989, 4988]
+2025-07-31 23:46:32,961 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5006, 5005, 5004, 5003, 5002, 5001, 5000, 4999, 4998]
+2025-07-31 23:46:43,412 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5014, 5013, 5012, 5011, 5010, 5009, 5008, 5007]
+2025-07-31 23:46:53,802 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5022, 5021, 5020, 5019, 5018, 5017, 5016, 5015]
+2025-07-31 23:47:04,233 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5030, 5029, 5028, 5027, 5026, 5025, 5024]
+2025-07-31 23:47:12,398 - INFO - Got difference for account updates
+2025-07-31 23:47:14,671 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5038, 5037, 5036, 5035, 5034, 5033, 5032, 5031]
+2025-07-31 23:47:25,124 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5048, 5047, 5046, 5045, 5044, 5043, 5042, 5041, 5040, 5039]
+2025-07-31 23:47:35,659 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5058, 5057, 5056, 5055, 5054, 5053, 5052, 5051, 5050, 5049]
+2025-07-31 23:47:45,933 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5063, 5062, 5061, 5060]
+2025-07-31 23:47:56,375 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5080, 5079, 5078, 5077, 5076, 5075, 5074]
+2025-07-31 23:48:06,808 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5088, 5087, 5086, 5085, 5084, 5083, 5082, 5081]
+2025-07-31 23:48:17,196 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5094, 5093, 5092, 5091, 5090, 5089]
+2025-07-31 23:48:27,582 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5102, 5101, 5100, 5099, 5098, 5097, 5096, 5095]
+2025-07-31 23:48:38,271 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5110, 5109, 5108, 5107, 5106, 5105, 5104, 5103]
+2025-07-31 23:48:48,916 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5120, 5119, 5118, 5117, 5116, 5115, 5114, 5113, 5112, 5111]
+2025-07-31 23:48:59,454 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5130, 5129, 5128, 5127, 5126, 5125, 5124, 5123, 5122, 5121]
+2025-07-31 23:49:09,779 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5136, 5135, 5134, 5133, 5132, 5131]
+2025-07-31 23:49:20,430 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5145, 5144, 5143, 5142, 5141, 5140, 5139, 5138, 5137]
+2025-07-31 23:49:31,005 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5154, 5153, 5152, 5151, 5150, 5149, 5148, 5147, 5146]
+2025-07-31 23:49:41,465 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5161, 5160, 5159, 5158, 5157, 5156, 5155]
+2025-07-31 23:49:51,889 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5169, 5168, 5167, 5166, 5165, 5164, 5163, 5162]
+2025-07-31 23:50:02,454 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5177, 5176, 5175, 5174, 5173, 5172, 5171, 5170]
+2025-07-31 23:50:12,977 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5187, 5186, 5185, 5184, 5183, 5182, 5181, 5180, 5179, 5178]
+2025-07-31 23:50:23,323 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5192, 5191, 5190, 5189, 5188]
+2025-07-31 23:50:33,830 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5201, 5200, 5199, 5198, 5197, 5196, 5195, 5194, 5193]
+2025-07-31 23:50:44,302 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5211, 5210, 5209, 5208, 5207, 5206, 5205, 5204, 5203, 5202]
+2025-07-31 23:50:54,811 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5220, 5219, 5218, 5217, 5216, 5215, 5214, 5213, 5212]
+2025-07-31 23:51:05,304 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5230, 5229, 5228, 5227, 5226, 5225, 5224, 5223, 5222, 5221]
+2025-07-31 23:51:15,843 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5240, 5239, 5238, 5237, 5236, 5235, 5234, 5233, 5232, 5231]
+2025-07-31 23:51:26,282 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5250, 5249, 5248, 5247, 5246, 5245, 5244, 5243, 5242, 5241]
+2025-07-31 23:51:36,738 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5259, 5258, 5257, 5256, 5255, 5254, 5253, 5252, 5251]
+2025-07-31 23:51:47,222 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5269, 5268, 5267, 5266, 5265, 5264, 5263, 5262, 5261, 5260]
+2025-07-31 23:51:57,556 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5282, 5281, 5280]
+2025-07-31 23:52:08,262 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5292, 5291, 5290, 5289, 5288, 5287, 5286, 5285, 5284, 5283]
+2025-07-31 23:52:18,685 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5302, 5301, 5300, 5299, 5298, 5297, 5296, 5295, 5294, 5293]
+2025-07-31 23:52:29,447 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5311, 5310, 5309, 5308, 5307, 5306, 5305, 5304, 5303]
+2025-07-31 23:52:35,883 - INFO - Got difference for channel 2477123839 updates
+2025-07-31 23:52:40,030 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5321, 5320, 5319, 5318, 5317, 5316, 5315, 5314, 5313, 5312]
+2025-07-31 23:52:50,487 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5340, 5339, 5338, 5337, 5336, 5335, 5334]
+2025-07-31 23:53:00,919 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5349, 5348, 5347, 5346, 5345, 5344, 5343, 5342, 5341]
+2025-07-31 23:53:11,370 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5355, 5354, 5353, 5352, 5351, 5350]
+2025-07-31 23:53:21,611 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5357, 5356]
+2025-07-31 23:53:32,037 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5365, 5364, 5363, 5362, 5361, 5360, 5359, 5358]
+2025-07-31 23:53:42,525 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5373, 5372, 5371, 5370, 5369, 5368, 5367, 5366]
+2025-07-31 23:53:52,970 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5378, 5377, 5376, 5375, 5374]
+2025-07-31 23:54:03,303 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5382, 5381, 5380, 5379]
+2025-07-31 23:54:13,971 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborildi: [5392, 5391, 5390, 5389, 5388, 5387, 5386, 5385, 5384, 5383]
+2025-07-31 23:54:16,975 - INFO - Got difference for channel 2477123839 updates
+2025-07-31 23:54:23,977 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga barcha postlar yuborildi. 30 soniya kutish.
+2025-07-31 23:54:53,991 - INFO - ⬇️ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborish boshlandi...
+2025-07-31 23:54:54,106 - ERROR - NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga forwardda xato: The specified message ID is invalid or you can't do that operation on such message (caused by ForwardMessagesRequest)
+2025-07-31 23:54:54,418 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [6]
+2025-07-31 23:55:04,749 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4459]
+2025-07-31 23:55:14,926 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4465]
+2025-07-31 23:55:25,217 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4466]
+2025-07-31 23:55:35,580 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4477]
+2025-07-31 23:55:45,772 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4587]
+2025-07-31 23:55:55,951 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4660]
+2025-07-31 23:56:06,159 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4744]
+2025-07-31 23:56:16,449 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5023]
+2025-07-31 23:56:26,619 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5059]
+2025-07-31 23:56:36,818 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5322]
+2025-07-31 23:56:47,161 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5323]
+2025-07-31 23:56:57,403 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4397, 4396]
+2025-07-31 23:57:08,441 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4407, 4406, 4405, 4404, 4403, 4402, 4401, 4400, 4399]
+2025-07-31 23:57:18,760 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4413, 4412, 4411, 4410, 4409, 4408]
+2025-07-31 23:57:29,103 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4418, 4417, 4416, 4415, 4414]
+2025-07-31 23:57:39,437 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4424, 4423, 4422, 4421, 4420, 4419]
+2025-07-31 23:57:49,854 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4432, 4431, 4430, 4429, 4428, 4427, 4426, 4425]
+2025-07-31 23:58:00,323 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4442, 4441, 4440, 4439, 4438, 4437, 4436, 4435, 4434, 4433]
+2025-07-31 23:58:10,815 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4452, 4451, 4450, 4449, 4448, 4447, 4446, 4445, 4444, 4443]
+2025-07-31 23:58:21,153 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4458, 4457, 4456, 4455, 4454, 4453]
+2025-07-31 23:58:31,475 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4464, 4463, 4462, 4461, 4460]
+2025-07-31 23:58:41,986 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4476, 4475, 4474, 4473, 4472, 4471, 4470, 4469, 4468, 4467]
+2025-07-31 23:58:52,456 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4486, 4485, 4484, 4483, 4482, 4481, 4480, 4479, 4478]
+2025-07-31 23:59:02,938 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4496, 4495, 4494, 4493, 4492, 4491, 4490, 4489, 4488, 4487]
+2025-07-31 23:59:13,358 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4504, 4503, 4502, 4501, 4500, 4499, 4498, 4497]
+2025-07-31 23:59:23,860 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4514, 4513, 4512, 4511, 4510, 4509, 4508, 4507, 4506, 4505]
+2025-07-31 23:59:34,256 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4520, 4519, 4518, 4517, 4516, 4515]
+2025-07-31 23:59:44,652 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4537, 4536, 4535, 4534, 4533, 4532, 4531, 4530]
+2025-07-31 23:59:55,574 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4545, 4544, 4543, 4542, 4541, 4540, 4539, 4538]
+2025-07-31 23:59:59,152 - INFO - Got difference for channel 1926452679 updates
+2025-08-01 00:00:05,985 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4554, 4553, 4552, 4551, 4550, 4549, 4548, 4547, 4546]
+2025-08-01 00:00:17,244 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4564, 4563, 4562, 4561, 4560, 4559, 4558, 4557, 4556, 4555]
+2025-08-01 00:00:27,617 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4573, 4572, 4571, 4570, 4569, 4568, 4567, 4566, 4565]
+2025-08-01 00:00:38,063 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4583, 4582, 4581, 4580, 4579, 4578, 4577, 4576, 4575, 4574]
+2025-08-01 00:00:48,337 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4586, 4585, 4584]
+2025-08-01 00:00:58,819 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4597, 4596, 4595, 4594, 4593, 4592, 4591, 4590, 4589, 4588]
+2025-08-01 00:01:09,287 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4606, 4605, 4604, 4603, 4602, 4601, 4600, 4599, 4598]
+2025-08-01 00:01:19,802 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4615, 4614, 4613, 4612, 4611, 4610, 4609, 4608, 4607]
+2025-08-01 00:01:30,239 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4621, 4620, 4619, 4618, 4617, 4616]
+2025-08-01 00:01:40,702 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4630, 4629, 4628, 4627, 4626, 4625, 4624, 4623, 4622]
+2025-08-01 00:01:51,196 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4640, 4639, 4638, 4637, 4636, 4635, 4634, 4633, 4632, 4631]
+2025-08-01 00:02:01,598 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4648, 4647, 4646, 4645, 4644, 4643, 4642, 4641]
+2025-08-01 00:02:11,942 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4655, 4654, 4653, 4652, 4651, 4650, 4649]
+2025-08-01 00:02:12,511 - INFO - Got difference for account updates
+2025-08-01 00:02:22,341 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4659, 4658, 4657, 4656]
+2025-08-01 00:02:32,707 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4665, 4664, 4663, 4662, 4661]
+2025-08-01 00:02:43,133 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4673, 4672, 4671, 4670, 4669, 4668, 4667]
+2025-08-01 00:02:53,602 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4681, 4680, 4679, 4678, 4677, 4676, 4675, 4674]
+2025-08-01 00:03:04,003 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4689, 4688, 4687, 4686, 4685, 4684, 4683, 4682]
+2025-08-01 00:03:14,797 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4699, 4698, 4697, 4696, 4695, 4694, 4693, 4692, 4691, 4690]
+2025-08-01 00:03:25,253 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4707, 4706, 4705, 4704, 4703, 4702, 4701, 4700]
+2025-08-01 00:03:35,791 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4715, 4714, 4713, 4712, 4711, 4710, 4709, 4708]
+2025-08-01 00:03:46,267 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4721, 4720, 4719, 4718, 4717, 4716]
+2025-08-01 00:03:56,687 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4730, 4729, 4728, 4727, 4726, 4725, 4724, 4723, 4722]
+2025-08-01 00:04:07,125 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4736, 4735, 4734, 4733, 4732, 4731]
+2025-08-01 00:04:17,575 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4743, 4742, 4741, 4740, 4739, 4738, 4737]
+2025-08-01 00:04:28,035 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4753, 4752, 4751, 4750, 4749, 4748, 4747, 4746, 4745]
+2025-08-01 00:04:38,632 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4763, 4762, 4761, 4760, 4759, 4758, 4757, 4756, 4755, 4754]
+2025-08-01 00:04:49,123 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4772, 4771, 4770, 4769, 4768, 4767, 4766, 4765, 4764]
+2025-08-01 00:04:59,475 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4778, 4777, 4776, 4775, 4774, 4773]
+2025-08-01 00:05:09,853 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4783, 4782, 4781, 4780, 4779]
+2025-08-01 00:05:21,010 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4793, 4792, 4791, 4790, 4789, 4788, 4787, 4786, 4785, 4784]
+2025-08-01 00:05:31,510 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4802, 4801, 4800, 4799, 4798, 4797, 4796, 4795, 4794]
+2025-08-01 00:05:41,962 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4811, 4810, 4809, 4808, 4807, 4806, 4805, 4804, 4803]
+2025-08-01 00:05:52,401 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4821, 4820, 4819, 4818, 4817, 4816, 4815, 4814, 4813, 4812]
+2025-08-01 00:06:02,866 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4830, 4829, 4828, 4827, 4826, 4825, 4824, 4823, 4822]
+2025-08-01 00:06:13,459 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4839, 4838, 4837, 4836, 4835, 4834, 4833, 4832, 4831]
+2025-08-01 00:06:23,827 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4846, 4845, 4844, 4843, 4842, 4841, 4840]
+2025-08-01 00:06:34,348 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4856, 4855, 4854, 4853, 4852, 4851, 4850, 4849, 4848, 4847]
+2025-08-01 00:06:45,241 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4865, 4864, 4863, 4862, 4861, 4860, 4859, 4858, 4857]
+2025-08-01 00:06:55,701 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4874, 4873, 4872, 4871, 4870, 4869, 4868, 4867, 4866]
+2025-08-01 00:07:06,240 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4884, 4883, 4882, 4881, 4880, 4879, 4878, 4877, 4876, 4875]
+2025-08-01 00:07:16,947 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4894, 4893, 4892, 4891, 4890, 4889, 4888, 4887, 4886, 4885]
+2025-08-01 00:07:27,457 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4904, 4903, 4902, 4901, 4900, 4899, 4898, 4897, 4896, 4895]
+2025-08-01 00:07:37,922 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4913, 4912, 4911, 4910, 4909, 4908, 4907, 4906, 4905]
+2025-08-01 00:07:48,515 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4922, 4921, 4920, 4919, 4918, 4917, 4916, 4915, 4914]
+2025-08-01 00:07:58,938 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4934, 4933, 4932, 4931, 4930, 4929, 4928]
+2025-08-01 00:08:09,438 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4944, 4943, 4942, 4941, 4940, 4939, 4938, 4937, 4936, 4935]
+2025-08-01 00:08:19,953 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4969, 4968, 4967, 4966, 4965, 4964, 4963, 4962]
+2025-08-01 00:08:30,522 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4979, 4978, 4977, 4976, 4975, 4974, 4973, 4972, 4971, 4970]
+2025-08-01 00:08:41,713 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4987, 4986, 4985, 4984, 4983, 4982, 4981, 4980]
+2025-08-01 00:08:52,138 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4997, 4996, 4995, 4994, 4993, 4992, 4991, 4990, 4989, 4988]
+2025-08-01 00:09:02,895 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5006, 5005, 5004, 5003, 5002, 5001, 5000, 4999, 4998]
+2025-08-01 00:09:13,267 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5014, 5013, 5012, 5011, 5010, 5009, 5008, 5007]
+2025-08-01 00:09:23,690 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5022, 5021, 5020, 5019, 5018, 5017, 5016, 5015]
+2025-08-01 00:09:34,046 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5030, 5029, 5028, 5027, 5026, 5025, 5024]
+2025-08-01 00:09:44,550 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5038, 5037, 5036, 5035, 5034, 5033, 5032, 5031]
+2025-08-01 00:09:55,138 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5048, 5047, 5046, 5045, 5044, 5043, 5042, 5041, 5040, 5039]
+2025-08-01 00:10:05,596 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5058, 5057, 5056, 5055, 5054, 5053, 5052, 5051, 5050, 5049]
+2025-08-01 00:10:16,199 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5063, 5062, 5061, 5060]
+2025-08-01 00:10:26,724 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5080, 5079, 5078, 5077, 5076, 5075, 5074]
+2025-08-01 00:10:37,140 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5088, 5087, 5086, 5085, 5084, 5083, 5082, 5081]
+2025-08-01 00:10:47,721 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5094, 5093, 5092, 5091, 5090, 5089]
+2025-08-01 00:10:58,163 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5102, 5101, 5100, 5099, 5098, 5097, 5096, 5095]
+2025-08-01 00:11:08,669 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5110, 5109, 5108, 5107, 5106, 5105, 5104, 5103]
+2025-08-01 00:11:19,115 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5120, 5119, 5118, 5117, 5116, 5115, 5114, 5113, 5112, 5111]
+2025-08-01 00:11:29,702 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5130, 5129, 5128, 5127, 5126, 5125, 5124, 5123, 5122, 5121]
+2025-08-01 00:11:40,041 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5136, 5135, 5134, 5133, 5132, 5131]
+2025-08-01 00:11:50,490 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5145, 5144, 5143, 5142, 5141, 5140, 5139, 5138, 5137]
+2025-08-01 00:12:00,938 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5154, 5153, 5152, 5151, 5150, 5149, 5148, 5147, 5146]
+2025-08-01 00:12:11,341 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5161, 5160, 5159, 5158, 5157, 5156, 5155]
+2025-08-01 00:12:21,778 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5169, 5168, 5167, 5166, 5165, 5164, 5163, 5162]
+2025-08-01 00:12:32,181 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5177, 5176, 5175, 5174, 5173, 5172, 5171, 5170]
+2025-08-01 00:12:42,732 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5187, 5186, 5185, 5184, 5183, 5182, 5181, 5180, 5179, 5178]
+2025-08-01 00:12:53,124 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5192, 5191, 5190, 5189, 5188]
+2025-08-01 00:13:03,530 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5201, 5200, 5199, 5198, 5197, 5196, 5195, 5194, 5193]
+2025-08-01 00:13:14,137 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5211, 5210, 5209, 5208, 5207, 5206, 5205, 5204, 5203, 5202]
+2025-08-01 00:13:24,847 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5220, 5219, 5218, 5217, 5216, 5215, 5214, 5213, 5212]
+2025-08-01 00:13:35,284 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5230, 5229, 5228, 5227, 5226, 5225, 5224, 5223, 5222, 5221]
+2025-08-01 00:13:46,021 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5240, 5239, 5238, 5237, 5236, 5235, 5234, 5233, 5232, 5231]
+2025-08-01 00:13:56,473 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5250, 5249, 5248, 5247, 5246, 5245, 5244, 5243, 5242, 5241]
+2025-08-01 00:14:06,955 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5259, 5258, 5257, 5256, 5255, 5254, 5253, 5252, 5251]
+2025-08-01 00:14:17,440 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5269, 5268, 5267, 5266, 5265, 5264, 5263, 5262, 5261, 5260]
+2025-08-01 00:14:28,016 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5282, 5281, 5280]
+2025-08-01 00:14:39,139 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5292, 5291, 5290, 5289, 5288, 5287, 5286, 5285, 5284, 5283]
+2025-08-01 00:14:49,626 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5302, 5301, 5300, 5299, 5298, 5297, 5296, 5295, 5294, 5293]
+2025-08-01 00:15:00,165 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5311, 5310, 5309, 5308, 5307, 5306, 5305, 5304, 5303]
+2025-08-01 00:15:11,579 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5321, 5320, 5319, 5318, 5317, 5316, 5315, 5314, 5313, 5312]
+2025-08-01 00:15:21,951 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5340, 5339, 5338, 5337, 5336, 5335, 5334]
+2025-08-01 00:15:32,396 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5349, 5348, 5347, 5346, 5345, 5344, 5343, 5342, 5341]
+2025-08-01 00:15:42,867 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5355, 5354, 5353, 5352, 5351, 5350]
+2025-08-01 00:15:53,083 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5357, 5356]
+2025-08-01 00:16:03,494 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5365, 5364, 5363, 5362, 5361, 5360, 5359, 5358]
+2025-08-01 00:16:13,917 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5373, 5372, 5371, 5370, 5369, 5368, 5367, 5366]
+2025-08-01 00:16:24,319 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5378, 5377, 5376, 5375, 5374]
+2025-08-01 00:16:30,000 - INFO - Got difference for channel 1926452679 updates
+2025-08-01 00:16:34,676 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5382, 5381, 5380, 5379]
+2025-08-01 00:16:39,940 - INFO - Got difference for channel 1926452679 updates
+2025-08-01 00:16:45,169 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5392, 5391, 5390, 5389, 5388, 5387, 5386, 5385, 5384, 5383]
+2025-08-01 00:16:49,929 - INFO - Got difference for channel 1926452679 updates
+2025-08-01 00:16:55,180 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga barcha postlar yuborildi. 30 soniya kutish.
+2025-08-01 00:17:23,897 - INFO - Got difference for channel 1926452679 updates
+2025-08-01 00:17:25,185 - INFO - ⬇️ НАВОИЙ УЙ САВДО ga yuborish boshlandi...
+2025-08-01 00:17:25,303 - ERROR - НАВОИЙ УЙ САВДО ga forwardda xato: The specified message ID is invalid or you can't do that operation on such message (caused by ForwardMessagesRequest)
+2025-08-01 00:17:25,484 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [6]
+2025-08-01 00:17:35,678 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4459]
+2025-08-01 00:17:44,811 - INFO - Got difference for channel 1926452679 updates
+2025-08-01 00:17:45,842 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4465]
+2025-08-01 00:17:56,009 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4466]
+2025-08-01 00:18:06,363 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4477]
+2025-08-01 00:18:16,873 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4587]
+2025-08-01 00:18:27,129 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4660]
+2025-08-01 00:18:37,326 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4744]
+2025-08-01 00:18:47,532 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5023]
+2025-08-01 00:18:57,725 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5059]
+2025-08-01 00:19:07,905 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5322]
+2025-08-01 00:19:18,083 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5323]
+2025-08-01 00:19:28,330 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4397, 4396]
+2025-08-01 00:19:38,760 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4407, 4406, 4405, 4404, 4403, 4402, 4401, 4400, 4399]
+2025-08-01 00:19:49,078 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4413, 4412, 4411, 4410, 4409, 4408]
+2025-08-01 00:19:59,323 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4418, 4417, 4416, 4415, 4414]
+2025-08-01 00:20:09,726 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4424, 4423, 4422, 4421, 4420, 4419]
+2025-08-01 00:20:20,062 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4432, 4431, 4430, 4429, 4428, 4427, 4426, 4425]
+2025-08-01 00:20:30,441 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4442, 4441, 4440, 4439, 4438, 4437, 4436, 4435, 4434, 4433]
+2025-08-01 00:20:40,859 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4452, 4451, 4450, 4449, 4448, 4447, 4446, 4445, 4444, 4443]
+2025-08-01 00:20:51,172 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4458, 4457, 4456, 4455, 4454, 4453]
+2025-08-01 00:21:01,460 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4464, 4463, 4462, 4461, 4460]
+2025-08-01 00:21:11,869 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4476, 4475, 4474, 4473, 4472, 4471, 4470, 4469, 4468, 4467]
+2025-08-01 00:21:22,326 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4486, 4485, 4484, 4483, 4482, 4481, 4480, 4479, 4478]
+2025-08-01 00:21:32,812 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4496, 4495, 4494, 4493, 4492, 4491, 4490, 4489, 4488, 4487]
+2025-08-01 00:21:41,302 - INFO - Got difference for channel 1195600096 updates
+2025-08-01 00:21:42,312 - INFO - Got difference for channel 1195600096 updates
+2025-08-01 00:21:43,234 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4504, 4503, 4502, 4501, 4500, 4499, 4498, 4497]
+2025-08-01 00:21:53,640 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4514, 4513, 4512, 4511, 4510, 4509, 4508, 4507, 4506, 4505]
+2025-08-01 00:22:03,931 - INFO - Got difference for channel 2477123839 updates
+2025-08-01 00:22:03,935 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4520, 4519, 4518, 4517, 4516, 4515]
+2025-08-01 00:22:14,279 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4537, 4536, 4535, 4534, 4533, 4532, 4531, 4530]
+2025-08-01 00:22:24,663 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4545, 4544, 4543, 4542, 4541, 4540, 4539, 4538]
+2025-08-01 00:22:35,015 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4554, 4553, 4552, 4551, 4550, 4549, 4548, 4547, 4546]
+2025-08-01 00:22:45,451 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4564, 4563, 4562, 4561, 4560, 4559, 4558, 4557, 4556, 4555]
+2025-08-01 00:22:55,799 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4573, 4572, 4571, 4570, 4569, 4568, 4567, 4566, 4565]
+2025-08-01 00:23:06,238 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4583, 4582, 4581, 4580, 4579, 4578, 4577, 4576, 4575, 4574]
+2025-08-01 00:23:16,638 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4586, 4585, 4584]
+2025-08-01 00:23:26,758 - WARNING - FloodWait: 284 soniya kutish
+2025-08-01 00:24:56,429 - INFO - Got difference for channel 2894814003 updates
+2025-08-01 00:28:16,312 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4606, 4605, 4604, 4603, 4602, 4601, 4600, 4599, 4598]
+2025-08-01 00:28:27,176 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4615, 4614, 4613, 4612, 4611, 4610, 4609, 4608, 4607]
+2025-08-01 00:28:32,588 - INFO - Got difference for channel 1195600096 updates
+2025-08-01 00:28:37,711 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4621, 4620, 4619, 4618, 4617, 4616]
+2025-08-01 00:28:43,932 - INFO - Got difference for channel 2477123839 updates
+2025-08-01 00:28:48,260 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4630, 4629, 4628, 4627, 4626, 4625, 4624, 4623, 4622]
+2025-08-01 00:28:58,774 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4640, 4639, 4638, 4637, 4636, 4635, 4634, 4633, 4632, 4631]
+2025-08-01 00:29:09,461 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4648, 4647, 4646, 4645, 4644, 4643, 4642, 4641]
+2025-08-01 00:29:20,366 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4655, 4654, 4653, 4652, 4651, 4650, 4649]
+2025-08-01 00:29:31,396 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4659, 4658, 4657, 4656]
+2025-08-01 00:29:41,852 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4665, 4664, 4663, 4662, 4661]
+2025-08-01 00:29:52,570 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4673, 4672, 4671, 4670, 4669, 4668, 4667]
+2025-08-01 00:30:04,156 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4681, 4680, 4679, 4678, 4677, 4676, 4675, 4674]
+2025-08-01 00:30:15,971 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4689, 4688, 4687, 4686, 4685, 4684, 4683, 4682]
+2025-08-01 00:30:27,142 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4699, 4698, 4697, 4696, 4695, 4694, 4693, 4692, 4691, 4690]
+2025-08-01 00:30:37,735 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4707, 4706, 4705, 4704, 4703, 4702, 4701, 4700]
+2025-08-01 00:30:49,092 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4715, 4714, 4713, 4712, 4711, 4710, 4709, 4708]
+2025-08-01 00:31:00,169 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4721, 4720, 4719, 4718, 4717, 4716]
+2025-08-01 00:31:11,112 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4730, 4729, 4728, 4727, 4726, 4725, 4724, 4723, 4722]
+2025-08-01 00:31:21,580 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4736, 4735, 4734, 4733, 4732, 4731]
+2025-08-01 00:31:31,957 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4743, 4742, 4741, 4740, 4739, 4738, 4737]
+2025-08-01 00:31:42,340 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4753, 4752, 4751, 4750, 4749, 4748, 4747, 4746, 4745]
+2025-08-01 00:31:54,597 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4763, 4762, 4761, 4760, 4759, 4758, 4757, 4756, 4755, 4754]
+2025-08-01 00:32:05,075 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4772, 4771, 4770, 4769, 4768, 4767, 4766, 4765, 4764]
+2025-08-01 00:32:14,573 - INFO - Got difference for channel 2065451930 updates
+2025-08-01 00:32:15,124 - INFO - Got difference for channel 2078966891 updates
+2025-08-01 00:32:15,727 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4778, 4777, 4776, 4775, 4774, 4773]
+2025-08-01 00:32:27,369 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4783, 4782, 4781, 4780, 4779]
+2025-08-01 00:32:39,482 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4793, 4792, 4791, 4790, 4789, 4788, 4787, 4786, 4785, 4784]
+2025-08-01 00:32:51,770 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4802, 4801, 4800, 4799, 4798, 4797, 4796, 4795, 4794]
+2025-08-01 00:33:02,847 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4811, 4810, 4809, 4808, 4807, 4806, 4805, 4804, 4803]
+2025-08-01 00:33:15,538 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4821, 4820, 4819, 4818, 4817, 4816, 4815, 4814, 4813, 4812]
+2025-08-01 00:33:27,428 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4830, 4829, 4828, 4827, 4826, 4825, 4824, 4823, 4822]
+2025-08-01 00:33:39,643 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4839, 4838, 4837, 4836, 4835, 4834, 4833, 4832, 4831]
+2025-08-01 00:33:50,820 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4846, 4845, 4844, 4843, 4842, 4841, 4840]
+2025-08-01 00:34:02,132 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4856, 4855, 4854, 4853, 4852, 4851, 4850, 4849, 4848, 4847]
+2025-08-01 00:34:13,212 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4865, 4864, 4863, 4862, 4861, 4860, 4859, 4858, 4857]
+2025-08-01 00:34:24,650 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4874, 4873, 4872, 4871, 4870, 4869, 4868, 4867, 4866]
+2025-08-01 00:34:29,274 - INFO - Got difference for channel 1926452679 updates
+2025-08-01 00:34:35,726 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4884, 4883, 4882, 4881, 4880, 4879, 4878, 4877, 4876, 4875]
+2025-08-01 00:34:35,931 - INFO - Got difference for channel 1926452679 updates
+2025-08-01 00:34:46,262 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4894, 4893, 4892, 4891, 4890, 4889, 4888, 4887, 4886, 4885]
+2025-08-01 00:34:58,239 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4904, 4903, 4902, 4901, 4900, 4899, 4898, 4897, 4896, 4895]
+2025-08-01 00:35:10,768 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4913, 4912, 4911, 4910, 4909, 4908, 4907, 4906, 4905]
+2025-08-01 00:35:23,740 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4922, 4921, 4920, 4919, 4918, 4917, 4916, 4915, 4914]
+2025-08-01 00:35:28,026 - INFO - Got difference for channel 1926452679 updates
+2025-08-01 00:35:37,147 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4934, 4933, 4932, 4931, 4930, 4929, 4928]
+2025-08-01 00:35:43,909 - INFO - Got difference for channel 1926452679 updates
+2025-08-01 00:35:52,617 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4944, 4943, 4942, 4941, 4940, 4939, 4938, 4937, 4936, 4935]
+2025-08-01 00:35:56,222 - INFO - Got difference for channel 1926452679 updates
+2025-08-01 00:36:08,021 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4969, 4968, 4967, 4966, 4965, 4964, 4963, 4962]
+2025-08-01 00:36:23,492 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4979, 4978, 4977, 4976, 4975, 4974, 4973, 4972, 4971, 4970]
+2025-08-01 00:36:38,884 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4987, 4986, 4985, 4984, 4983, 4982, 4981, 4980]
+2025-08-01 00:36:52,871 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [4997, 4996, 4995, 4994, 4993, 4992, 4991, 4990, 4989, 4988]
+2025-08-01 00:37:07,174 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5006, 5005, 5004, 5003, 5002, 5001, 5000, 4999, 4998]
+2025-08-01 00:37:22,339 - WARNING - Telegram is having internal issues ServerError: RPCError -500: No workers running (caused by ForwardMessagesRequest)
+2025-08-01 00:37:22,928 - INFO - Got difference for channel 2078966891 updates
+2025-08-01 00:37:29,741 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5014, 5013, 5012, 5011, 5010, 5009, 5008, 5007]
+2025-08-01 00:37:45,127 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5022, 5021, 5020, 5019, 5018, 5017, 5016, 5015]
+2025-08-01 00:38:00,496 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5030, 5029, 5028, 5027, 5026, 5025, 5024]
+2025-08-01 00:38:15,828 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5038, 5037, 5036, 5035, 5034, 5033, 5032, 5031]
+2025-08-01 00:38:30,067 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5048, 5047, 5046, 5045, 5044, 5043, 5042, 5041, 5040, 5039]
+2025-08-01 00:38:43,281 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5058, 5057, 5056, 5055, 5054, 5053, 5052, 5051, 5050, 5049]
+2025-08-01 00:38:56,011 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5063, 5062, 5061, 5060]
+2025-08-01 00:39:07,217 - INFO - Got difference for channel 1926452679 updates
+2025-08-01 00:39:07,857 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5080, 5079, 5078, 5077, 5076, 5075, 5074]
+2025-08-01 00:39:19,180 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5088, 5087, 5086, 5085, 5084, 5083, 5082, 5081]
+2025-08-01 00:39:30,642 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5094, 5093, 5092, 5091, 5090, 5089]
+2025-08-01 00:39:42,722 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5102, 5101, 5100, 5099, 5098, 5097, 5096, 5095]
+2025-08-01 00:39:56,840 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5110, 5109, 5108, 5107, 5106, 5105, 5104, 5103]
+2025-08-01 00:40:00,256 - INFO - Got difference for channel 2894814003 updates
+2025-08-01 00:40:11,508 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5120, 5119, 5118, 5117, 5116, 5115, 5114, 5113, 5112, 5111]
+2025-08-01 00:40:15,582 - INFO - Got difference for channel 1195600096 updates
+2025-08-01 00:40:24,914 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5130, 5129, 5128, 5127, 5126, 5125, 5124, 5123, 5122, 5121]
+2025-08-01 00:40:37,835 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5136, 5135, 5134, 5133, 5132, 5131]
+2025-08-01 00:40:51,015 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5145, 5144, 5143, 5142, 5141, 5140, 5139, 5138, 5137]
+2025-08-01 00:41:06,008 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5154, 5153, 5152, 5151, 5150, 5149, 5148, 5147, 5146]
+2025-08-01 00:41:21,745 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5161, 5160, 5159, 5158, 5157, 5156, 5155]
+2025-08-01 00:41:36,775 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5169, 5168, 5167, 5166, 5165, 5164, 5163, 5162]
+2025-08-01 00:41:51,627 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5177, 5176, 5175, 5174, 5173, 5172, 5171, 5170]
+2025-08-01 00:42:07,069 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5187, 5186, 5185, 5184, 5183, 5182, 5181, 5180, 5179, 5178]
+2025-08-01 00:42:22,153 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5192, 5191, 5190, 5189, 5188]
+2025-08-01 00:42:35,929 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5201, 5200, 5199, 5198, 5197, 5196, 5195, 5194, 5193]
+2025-08-01 00:42:48,902 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5211, 5210, 5209, 5208, 5207, 5206, 5205, 5204, 5203, 5202]
+2025-08-01 00:43:01,375 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5220, 5219, 5218, 5217, 5216, 5215, 5214, 5213, 5212]
+2025-08-01 00:43:13,749 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5230, 5229, 5228, 5227, 5226, 5225, 5224, 5223, 5222, 5221]
+2025-08-01 00:43:27,097 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5240, 5239, 5238, 5237, 5236, 5235, 5234, 5233, 5232, 5231]
+2025-08-01 00:43:40,451 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5250, 5249, 5248, 5247, 5246, 5245, 5244, 5243, 5242, 5241]
+2025-08-01 00:43:46,492 - INFO - Got difference for channel 2477123839 updates
+2025-08-01 00:43:53,536 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5259, 5258, 5257, 5256, 5255, 5254, 5253, 5252, 5251]
+2025-08-01 00:44:07,571 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5269, 5268, 5267, 5266, 5265, 5264, 5263, 5262, 5261, 5260]
+2025-08-01 00:44:22,815 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5282, 5281, 5280]
+2025-08-01 00:44:38,250 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5292, 5291, 5290, 5289, 5288, 5287, 5286, 5285, 5284, 5283]
+2025-08-01 00:44:53,705 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5302, 5301, 5300, 5299, 5298, 5297, 5296, 5295, 5294, 5293]
+2025-08-01 00:45:09,150 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5311, 5310, 5309, 5308, 5307, 5306, 5305, 5304, 5303]
+2025-08-01 00:45:23,915 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5321, 5320, 5319, 5318, 5317, 5316, 5315, 5314, 5313, 5312]
+2025-08-01 00:45:37,122 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5340, 5339, 5338, 5337, 5336, 5335, 5334]
+2025-08-01 00:45:48,856 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5349, 5348, 5347, 5346, 5345, 5344, 5343, 5342, 5341]
+2025-08-01 00:46:00,608 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5355, 5354, 5353, 5352, 5351, 5350]
+2025-08-01 00:46:12,941 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5357, 5356]
+2025-08-01 00:46:24,985 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5365, 5364, 5363, 5362, 5361, 5360, 5359, 5358]
+2025-08-01 00:46:37,192 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5373, 5372, 5371, 5370, 5369, 5368, 5367, 5366]
+2025-08-01 00:46:49,190 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5378, 5377, 5376, 5375, 5374]
+2025-08-01 00:46:59,943 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5382, 5381, 5380, 5379]
+2025-08-01 00:47:12,670 - INFO - ✅ НАВОИЙ УЙ САВДО ga yuborildi: [5392, 5391, 5390, 5389, 5388, 5387, 5386, 5385, 5384, 5383]
+2025-08-01 00:47:17,185 - INFO - Got difference for channel 1588768665 updates
+2025-08-01 00:47:22,677 - INFO - ✅ НАВОИЙ УЙ САВДО ga barcha postlar yuborildi. 30 soniya kutish.
+2025-08-01 00:47:52,685 - INFO - ⬇️ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborish boshlandi...
+2025-08-01 00:47:52,809 - ERROR - NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga forwardda xato: The specified message ID is invalid or you can't do that operation on such message (caused by ForwardMessagesRequest)
+2025-08-01 00:47:53,026 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [6]
+2025-08-01 00:48:03,240 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4459]
+2025-08-01 00:48:13,426 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4465]
+2025-08-01 00:48:23,640 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4466]
+2025-08-01 00:48:33,844 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4477]
+2025-08-01 00:48:44,037 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4587]
+2025-08-01 00:48:54,250 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4660]
+2025-08-01 00:49:04,438 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4744]
+2025-08-01 00:49:14,674 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5023]
+2025-08-01 00:49:24,840 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5059]
+2025-08-01 00:49:35,019 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5322]
+2025-08-01 00:49:45,252 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5323]
+2025-08-01 00:49:55,773 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4397, 4396]
+2025-08-01 00:50:06,276 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4407, 4406, 4405, 4404, 4403, 4402, 4401, 4400, 4399]
+2025-08-01 00:50:17,078 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4413, 4412, 4411, 4410, 4409, 4408]
+2025-08-01 00:50:27,416 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4418, 4417, 4416, 4415, 4414]
+2025-08-01 00:50:37,771 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4424, 4423, 4422, 4421, 4420, 4419]
+2025-08-01 00:50:48,736 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4432, 4431, 4430, 4429, 4428, 4427, 4426, 4425]
+2025-08-01 00:50:58,962 - INFO - Got difference for channel 1926452679 updates
+2025-08-01 00:50:59,173 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4442, 4441, 4440, 4439, 4438, 4437, 4436, 4435, 4434, 4433]
+2025-08-01 00:51:10,172 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4452, 4451, 4450, 4449, 4448, 4447, 4446, 4445, 4444, 4443]
+2025-08-01 00:51:20,809 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4458, 4457, 4456, 4455, 4454, 4453]
+2025-08-01 00:51:31,116 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4464, 4463, 4462, 4461, 4460]
+2025-08-01 00:51:31,798 - INFO - Got difference for channel 1926452679 updates
+2025-08-01 00:51:41,610 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4476, 4475, 4474, 4473, 4472, 4471, 4470, 4469, 4468, 4467]
+2025-08-01 00:51:52,050 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4486, 4485, 4484, 4483, 4482, 4481, 4480, 4479, 4478]
+2025-08-01 00:52:02,562 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4496, 4495, 4494, 4493, 4492, 4491, 4490, 4489, 4488, 4487]
+2025-08-01 00:52:10,413 - INFO - Got difference for channel 1926452679 updates
+2025-08-01 00:52:12,926 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4504, 4503, 4502, 4501, 4500, 4499, 4498, 4497]
+2025-08-01 00:52:23,570 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4514, 4513, 4512, 4511, 4510, 4509, 4508, 4507, 4506, 4505]
+2025-08-01 00:52:33,935 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4520, 4519, 4518, 4517, 4516, 4515]
+2025-08-01 00:52:44,276 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4537, 4536, 4535, 4534, 4533, 4532, 4531, 4530]
+2025-08-01 00:52:54,680 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4545, 4544, 4543, 4542, 4541, 4540, 4539, 4538]
+2025-08-01 00:53:05,197 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4554, 4553, 4552, 4551, 4550, 4549, 4548, 4547, 4546]
+2025-08-01 00:53:15,650 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4564, 4563, 4562, 4561, 4560, 4559, 4558, 4557, 4556, 4555]
+2025-08-01 00:53:26,067 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4573, 4572, 4571, 4570, 4569, 4568, 4567, 4566, 4565]
+2025-08-01 00:53:36,570 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4583, 4582, 4581, 4580, 4579, 4578, 4577, 4576, 4575, 4574]
+2025-08-01 00:53:46,902 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4586, 4585, 4584]
+2025-08-01 00:53:57,365 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4597, 4596, 4595, 4594, 4593, 4592, 4591, 4590, 4589, 4588]
+2025-08-01 00:54:07,777 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4606, 4605, 4604, 4603, 4602, 4601, 4600, 4599, 4598]
+2025-08-01 00:54:18,348 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4615, 4614, 4613, 4612, 4611, 4610, 4609, 4608, 4607]
+2025-08-01 00:54:28,685 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4621, 4620, 4619, 4618, 4617, 4616]
+2025-08-01 00:54:39,126 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4630, 4629, 4628, 4627, 4626, 4625, 4624, 4623, 4622]
+2025-08-01 00:54:49,606 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4640, 4639, 4638, 4637, 4636, 4635, 4634, 4633, 4632, 4631]
+2025-08-01 00:55:00,080 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4648, 4647, 4646, 4645, 4644, 4643, 4642, 4641]
+2025-08-01 00:55:10,839 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4655, 4654, 4653, 4652, 4651, 4650, 4649]
+2025-08-01 00:55:21,122 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4659, 4658, 4657, 4656]
+2025-08-01 00:55:31,437 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4665, 4664, 4663, 4662, 4661]
+2025-08-01 00:55:42,081 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4673, 4672, 4671, 4670, 4669, 4668, 4667]
+2025-08-01 00:55:52,963 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4681, 4680, 4679, 4678, 4677, 4676, 4675, 4674]
+2025-08-01 00:56:03,358 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4689, 4688, 4687, 4686, 4685, 4684, 4683, 4682]
+2025-08-01 00:56:13,893 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4699, 4698, 4697, 4696, 4695, 4694, 4693, 4692, 4691, 4690]
+2025-08-01 00:56:17,592 - INFO - Got difference for channel 1588768665 updates
+2025-08-01 00:56:24,351 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4707, 4706, 4705, 4704, 4703, 4702, 4701, 4700]
+2025-08-01 00:56:32,100 - INFO - Got difference for channel 2562779640 updates
+2025-08-01 00:56:34,760 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4715, 4714, 4713, 4712, 4711, 4710, 4709, 4708]
+2025-08-01 00:56:45,060 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4721, 4720, 4719, 4718, 4717, 4716]
+2025-08-01 00:56:55,582 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4730, 4729, 4728, 4727, 4726, 4725, 4724, 4723, 4722]
+2025-08-01 00:57:05,944 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4736, 4735, 4734, 4733, 4732, 4731]
+2025-08-01 00:57:16,299 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4743, 4742, 4741, 4740, 4739, 4738, 4737]
+2025-08-01 00:57:26,719 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4753, 4752, 4751, 4750, 4749, 4748, 4747, 4746, 4745]
+2025-08-01 00:57:37,207 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4763, 4762, 4761, 4760, 4759, 4758, 4757, 4756, 4755, 4754]
+2025-08-01 00:57:47,657 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4772, 4771, 4770, 4769, 4768, 4767, 4766, 4765, 4764]
+2025-08-01 00:57:57,969 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4778, 4777, 4776, 4775, 4774, 4773]
+2025-08-01 00:58:08,315 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4783, 4782, 4781, 4780, 4779]
+2025-08-01 00:58:19,219 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4793, 4792, 4791, 4790, 4789, 4788, 4787, 4786, 4785, 4784]
+2025-08-01 00:58:29,635 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4802, 4801, 4800, 4799, 4798, 4797, 4796, 4795, 4794]
+2025-08-01 00:58:40,294 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4811, 4810, 4809, 4808, 4807, 4806, 4805, 4804, 4803]
+2025-08-01 00:58:50,789 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4821, 4820, 4819, 4818, 4817, 4816, 4815, 4814, 4813, 4812]
+2025-08-01 00:59:01,176 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4830, 4829, 4828, 4827, 4826, 4825, 4824, 4823, 4822]
+2025-08-01 00:59:11,674 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4839, 4838, 4837, 4836, 4835, 4834, 4833, 4832, 4831]
+2025-08-01 00:59:22,062 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4846, 4845, 4844, 4843, 4842, 4841, 4840]
+2025-08-01 00:59:32,523 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4856, 4855, 4854, 4853, 4852, 4851, 4850, 4849, 4848, 4847]
+2025-08-01 00:59:42,917 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4865, 4864, 4863, 4862, 4861, 4860, 4859, 4858, 4857]
+2025-08-01 00:59:53,403 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4874, 4873, 4872, 4871, 4870, 4869, 4868, 4867, 4866]
+2025-08-01 01:00:04,398 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4884, 4883, 4882, 4881, 4880, 4879, 4878, 4877, 4876, 4875]
+2025-08-01 01:00:14,842 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4894, 4893, 4892, 4891, 4890, 4889, 4888, 4887, 4886, 4885]
+2025-08-01 01:00:25,296 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4904, 4903, 4902, 4901, 4900, 4899, 4898, 4897, 4896, 4895]
+2025-08-01 01:00:35,774 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4913, 4912, 4911, 4910, 4909, 4908, 4907, 4906, 4905]
+2025-08-01 01:00:46,161 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4922, 4921, 4920, 4919, 4918, 4917, 4916, 4915, 4914]
+2025-08-01 01:00:56,579 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4934, 4933, 4932, 4931, 4930, 4929, 4928]
+2025-08-01 01:01:07,030 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4944, 4943, 4942, 4941, 4940, 4939, 4938, 4937, 4936, 4935]
+2025-08-01 01:01:18,861 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4969, 4968, 4967, 4966, 4965, 4964, 4963, 4962]
+2025-08-01 01:01:32,536 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4979, 4978, 4977, 4976, 4975, 4974, 4973, 4972, 4971, 4970]
+2025-08-01 01:01:43,090 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4987, 4986, 4985, 4984, 4983, 4982, 4981, 4980]
+2025-08-01 01:01:53,622 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [4997, 4996, 4995, 4994, 4993, 4992, 4991, 4990, 4989, 4988]
+2025-08-01 01:02:04,068 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5006, 5005, 5004, 5003, 5002, 5001, 5000, 4999, 4998]
+2025-08-01 01:02:14,476 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5014, 5013, 5012, 5011, 5010, 5009, 5008, 5007]
+2025-08-01 01:02:16,014 - INFO - Got difference for account updates
+2025-08-01 01:02:24,965 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5022, 5021, 5020, 5019, 5018, 5017, 5016, 5015]
+2025-08-01 01:02:35,399 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5030, 5029, 5028, 5027, 5026, 5025, 5024]
+2025-08-01 01:02:45,863 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5038, 5037, 5036, 5035, 5034, 5033, 5032, 5031]
+2025-08-01 01:02:56,494 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5048, 5047, 5046, 5045, 5044, 5043, 5042, 5041, 5040, 5039]
+2025-08-01 01:03:07,293 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5058, 5057, 5056, 5055, 5054, 5053, 5052, 5051, 5050, 5049]
+2025-08-01 01:03:17,609 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5063, 5062, 5061, 5060]
+2025-08-01 01:03:28,012 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5080, 5079, 5078, 5077, 5076, 5075, 5074]
+2025-08-01 01:03:38,422 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5088, 5087, 5086, 5085, 5084, 5083, 5082, 5081]
+2025-08-01 01:03:44,633 - INFO - Got difference for channel 1195600096 updates
+2025-08-01 01:03:48,833 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5094, 5093, 5092, 5091, 5090, 5089]
+2025-08-01 01:03:59,271 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5102, 5101, 5100, 5099, 5098, 5097, 5096, 5095]
+2025-08-01 01:04:10,118 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5110, 5109, 5108, 5107, 5106, 5105, 5104, 5103]
+2025-08-01 01:04:20,572 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5120, 5119, 5118, 5117, 5116, 5115, 5114, 5113, 5112, 5111]
+2025-08-01 01:04:31,056 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5130, 5129, 5128, 5127, 5126, 5125, 5124, 5123, 5122, 5121]
+2025-08-01 01:04:41,461 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5136, 5135, 5134, 5133, 5132, 5131]
+2025-08-01 01:04:51,904 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5145, 5144, 5143, 5142, 5141, 5140, 5139, 5138, 5137]
+2025-08-01 01:05:02,403 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5154, 5153, 5152, 5151, 5150, 5149, 5148, 5147, 5146]
+2025-08-01 01:05:12,829 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5161, 5160, 5159, 5158, 5157, 5156, 5155]
+2025-08-01 01:05:23,298 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5169, 5168, 5167, 5166, 5165, 5164, 5163, 5162]
+2025-08-01 01:05:33,909 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5177, 5176, 5175, 5174, 5173, 5172, 5171, 5170]
+2025-08-01 01:05:44,347 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5187, 5186, 5185, 5184, 5183, 5182, 5181, 5180, 5179, 5178]
+2025-08-01 01:05:54,622 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5192, 5191, 5190, 5189, 5188]
+2025-08-01 01:06:05,052 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5201, 5200, 5199, 5198, 5197, 5196, 5195, 5194, 5193]
+2025-08-01 01:06:15,454 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5211, 5210, 5209, 5208, 5207, 5206, 5205, 5204, 5203, 5202]
+2025-08-01 01:06:25,903 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5220, 5219, 5218, 5217, 5216, 5215, 5214, 5213, 5212]
+2025-08-01 01:06:36,435 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5230, 5229, 5228, 5227, 5226, 5225, 5224, 5223, 5222, 5221]
+2025-08-01 01:06:46,882 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5240, 5239, 5238, 5237, 5236, 5235, 5234, 5233, 5232, 5231]
+2025-08-01 01:06:57,780 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5250, 5249, 5248, 5247, 5246, 5245, 5244, 5243, 5242, 5241]
+2025-08-01 01:07:08,212 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5259, 5258, 5257, 5256, 5255, 5254, 5253, 5252, 5251]
+2025-08-01 01:07:18,626 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5269, 5268, 5267, 5266, 5265, 5264, 5263, 5262, 5261, 5260]
+2025-08-01 01:07:23,448 - INFO - Got difference for channel 2078966891 updates
+2025-08-01 01:07:28,937 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5282, 5281, 5280]
+2025-08-01 01:07:40,150 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5292, 5291, 5290, 5289, 5288, 5287, 5286, 5285, 5284, 5283]
+2025-08-01 01:07:50,678 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5302, 5301, 5300, 5299, 5298, 5297, 5296, 5295, 5294, 5293]
+2025-08-01 01:07:51,350 - INFO - Got difference for channel 1926452679 updates
+2025-08-01 01:08:01,282 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5311, 5310, 5309, 5308, 5307, 5306, 5305, 5304, 5303]
+2025-08-01 01:08:11,831 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5321, 5320, 5319, 5318, 5317, 5316, 5315, 5314, 5313, 5312]
+2025-08-01 01:08:12,508 - INFO - Got difference for channel 1926452679 updates
+2025-08-01 01:08:22,191 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5340, 5339, 5338, 5337, 5336, 5335, 5334]
+2025-08-01 01:08:32,810 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5349, 5348, 5347, 5346, 5345, 5344, 5343, 5342, 5341]
+2025-08-01 01:08:43,137 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5355, 5354, 5353, 5352, 5351, 5350]
+2025-08-01 01:08:47,397 - INFO - Got difference for channel 1926452679 updates
+2025-08-01 01:08:48,357 - INFO - Got difference for channel 1926452679 updates
+2025-08-01 01:08:53,360 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5357, 5356]
+2025-08-01 01:08:53,982 - INFO - Got difference for channel 1926452679 updates
+2025-08-01 01:09:01,059 - INFO - Got difference for channel 1926452679 updates
+2025-08-01 01:09:04,222 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5365, 5364, 5363, 5362, 5361, 5360, 5359, 5358]
+2025-08-01 01:09:04,320 - INFO - Got difference for channel 1926452679 updates
+2025-08-01 01:09:07,983 - INFO - Got difference for channel 1926452679 updates
+2025-08-01 01:09:14,595 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5373, 5372, 5371, 5370, 5369, 5368, 5367, 5366]
+2025-08-01 01:09:24,902 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5378, 5377, 5376, 5375, 5374]
+2025-08-01 01:09:26,949 - INFO - Got difference for channel 1926452679 updates
+2025-08-01 01:09:35,878 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5382, 5381, 5380, 5379]
+2025-08-01 01:09:40,981 - INFO - Got difference for channel 1926452679 updates
+2025-08-01 01:09:44,996 - INFO - Got difference for channel 1926452679 updates
+2025-08-01 01:09:46,293 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborildi: [5392, 5391, 5390, 5389, 5388, 5387, 5386, 5385, 5384, 5383]
+2025-08-01 01:09:56,306 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga barcha postlar yuborildi. 30 soniya kutish.
+2025-08-01 01:10:26,315 - INFO - 🔄 Keyingi aylanaga tayyorlanmoqda...
+2025-08-01 01:10:26,678 - INFO - Postlar yo‘q.
+2025-08-01 01:10:26,679 - INFO - Yangi postlar yo‘q. 5 daqiqa kutilyapti...
+2025-08-01 01:11:50,690 - INFO - Got difference for channel 2392278462 updates
+2025-08-01 01:12:05,880 - INFO - Got difference for channel 1195600096 updates
+2025-08-01 01:15:27,176 - INFO - Admin guruh topildi: НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ
+2025-08-01 01:15:27,176 - INFO - Admin guruh topildi: NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI"
+2025-08-01 01:15:27,176 - INFO - Admin guruh topildi: НАВОИЙ УЙ САВДО
+2025-08-01 01:15:27,298 - ERROR - Qo‘shimcha guruhda xato: Navoiy_uy_joy_kvartira_bozori - No user has "navoiy_uy_joy_kvartira_bozori" as username
+2025-08-01 01:15:27,408 - INFO - Qo‘shimcha guruh qo‘shildi: NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI"
+2025-08-01 01:15:27,408 - INFO - ⬇️ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga yuborish boshlandi...
+2025-08-01 01:15:27,408 - INFO - ✅ НАВОИЙ УЙ ЖОЙ КВАРТИРА САВДОСИ ga barcha postlar yuborildi. 30 soniya kutish.
+2025-08-01 01:15:27,430 - INFO - Got difference for channel 2477123839 updates
+2025-08-01 01:15:57,415 - INFO - ⬇️ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborish boshlandi...
+2025-08-01 01:15:57,416 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga barcha postlar yuborildi. 30 soniya kutish.
+2025-08-01 01:16:27,433 - INFO - ⬇️ НАВОИЙ УЙ САВДО ga yuborish boshlandi...
+2025-08-01 01:16:27,433 - INFO - ✅ НАВОИЙ УЙ САВДО ga barcha postlar yuborildi. 30 soniya kutish.
+2025-08-01 01:16:57,456 - INFO - ⬇️ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga yuborish boshlandi...
+2025-08-01 01:16:57,457 - INFO - ✅ NAVOIY UY JOY KVARTIRA OLDI SOTDI IJARA "RIELTORLIK XIZMATLARI" ga barcha postlar yuborildi. 30 soniya kutish.
+2025-08-01 01:17:27,468 - INFO - 🔄 Keyingi aylanaga tayyorlanmoqda...
+2025-08-01 01:17:27,975 - INFO - Postlar yo‘q.
+2025-08-01 01:17:27,975 - INFO - Yangi postlar yo‘q. 5 daqiqa kutilyapti...
+2025-08-01 01:20:27,506 - INFO - Got difference for channel 1195600096 updates
