@@ -32,7 +32,7 @@ ADDITIONAL_GROUPS = [
 def is_working_time():
     """23:00 dan 03:00 gacha ish vaqti (hozirgi vaqtga moslashtirildi)"""
     now = datetime.now().time()
-    return dt_time(23, 0) <= now or now <= dt_time(3, 0)
+    return dt_time(4, 0) <= now or now <= dt_time(18, 0)
 
 async def get_admin_groups():
     """Admin bo‘lgan guruhlar va qo‘shimcha guruhlar"""
