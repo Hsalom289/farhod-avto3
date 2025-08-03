@@ -3,7 +3,7 @@ from telethon.tl.functions.messages import GetDialogsRequest
 from telethon.tl.types import InputPeerEmpty
 from telethon.errors import FloodWaitError, SessionPasswordNeededError, PhoneNumberBannedError
 import asyncio
-from datetime import datetime, time as dt_time
+from datetime import datetime, time as dt_time, timezone, timedelta
 import logging
 
 # Loglash sozlamalari
@@ -30,9 +30,10 @@ ADDITIONAL_GROUPS = [
 ]
 
 def is_working_time():
-    """23:00 dan 03:00 gacha ish vaqti (hozirgi vaqtga moslashtirildi)"""
-    now = datetime.now().time()
-    return dt_time(5 , 0) <= now or now <= dt_time(18 , 0)
+    """10:00 dan 22:00 gacha ish vaqti (O‘zbekiston vaqti, UTC+5)"""
+    uz_timezone = timezone(timedelta(hours=5))
+    now = datetime.now(uz_timezone).time()
+    return dt_time(10, 0) <= now <= dt_time(22, 0)
 
 async def get_admin_groups():
     """Admin bo‘lgan guruhlar va qo‘shimcha guruhlar"""
@@ -156,5 +157,3 @@ async def main():
 if __name__ == "__main__":
     with client:
         client.loop.run_until_complete(main())
-
-
