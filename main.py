@@ -140,4 +140,19 @@ async def main():
                             logging.error(f"{group.title} ga forwardda xato: {str(e)}")
                             continue
 
-                logging.info(f"✅
+                logging.info(f"✅ {group.title} ga barcha postlar yuborildi. 30 soniya kutish.")
+                await asyncio.sleep(30)
+
+            logging.info("🔄 Keyingi aylanaga tayyorlanmoqda...")
+            navoiy_uy_joy_posts, next_min_id = await get_navoiy_uy_joy_posts(min_id=next_min_id)
+            if not navoiy_uy_joy_posts:
+                logging.info("Yangi postlar yo‘q. 5 daqiqa kutilyapti...")
+                await asyncio.sleep(300)
+
+    except Exception as e:
+        logging.error(f"Umumiy xato: {str(e)}")
+        await asyncio.sleep(60)
+
+if __name__ == "__main__":
+    with client:
+        client.loop.run_until_complete(main())
