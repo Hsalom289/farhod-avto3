@@ -6,50 +6,112 @@ import asyncio
 from datetime import datetime, time as dt_time, timezone, timedelta
 import logging
 import os
+from urllib.parse import urlparse
 
-# Logging configuration (console only)
+# -------------------- Logging --------------------
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[logging.StreamHandler()]
 )
 
-# Telegram API credentials
+# -------------------- Telegram API --------------------
 api_id = 16072756
 api_hash = '5fc7839a0d020c256e5c901cebd21bb7'
 phone = '+998335217424'
 session_file = 'session_name.session'
 
-# Telegram channel and groups
-NAVOIY_UY_JOY_CHANNEL_USERNAME = "Navoiy_uy_joy_kv_barcha_elonlar"
+# -------------------- Manba kanal (faqat username) --------------------
+NAVOIY_UY_JOY_CHANNEL_USERNAME = "Navoiy_uy_barcha_elonlar_bazasi"
+
+# -------------------- Qo‘shimcha guruhlar --------------------
 ADDITIONAL_GROUPS = [
     "Navoiy_uy_joy_kvartira_bozori",
     "Navoiy_uy_joy_savdosi"
 ]
 
+# -------------------- Exclude ro‘yxati --------------------
+EXCLUDED_LINKS_OR_USERNAMES = [
+    "https://t.me/Navoiy_uy_barcha_elonlar_bazasi",
+    "https://t.me/Navoiy_1_xona_kvartira",
+    "https://t.me/Navoiy_2_xona_kvartira",
+    "https://t.me/Navoiy_3_4_5_xona_kvartira",
+    "https://t.me/Navoiy_hovli_katedj_dacha",
+    "https://t.me/Navoiy_ijaraga_kv_uyFarxod",
+    "https://t.me/Navoiy_uy_joy_kv_barcha_elonlar",
+    "https://t.me/+PMAqGE3CAmJmNjcy",
+    "https://t.me/+lHIK53jRNKM3NDky",
+    "https://t.me/Navoiy_uyjoy_savdo",
+    "https://t.me/+UwOCqvDQ4VpkNWUy",
+    "https://t.me/UyTopdim_Navoiy",
+]
+
+# -------------------- Ish vaqti --------------------
 def is_working_time():
-    """Check if current time is within working hours (10:00–22:00 Uzbekistan time, UTC+5)"""
     uz_timezone = timezone(timedelta(hours=5))
     now = datetime.now(uz_timezone).time()
     return dt_time(10, 0) <= now <= dt_time(23, 0)
 
+# -------------------- Linkdan username ajratish --------------------
+def extract_username_from_link(link: str):
+    if not link:
+        return None
+    if link.startswith("http"):
+        try:
+            parsed = urlparse(link)
+            if parsed.netloc not in ("t.me", "telegram.me"):
+                return None
+            path = parsed.path.strip("/")
+            if not path or path.startswith("+"):
+                return None
+            return path
+        except Exception:
+            return None
+    return link.replace("@", "").strip()
+
+# -------------------- Ulanish --------------------
 async def ensure_connection(client):
-    """Ensure the client is connected, reconnect if necessary"""
     try:
         if not client.is_connected():
-            logging.info("Client is disconnected. Attempting to reconnect...")
+            logging.info("Client disconnected. Reconnecting...")
             await client.connect()
-            logging.info("Reconnected successfully.")
+            logging.info("Reconnected.")
         return True
     except Exception as e:
-        logging.error(f"Failed to reconnect: {str(e)}")
+        logging.error(f"Reconnect failed: {e}")
         return False
 
-async def get_admin_groups(client):
-    """Fetch groups where the user is an admin and additional groups"""
+# -------------------- Exclude setlarini tayyorlash --------------------
+async def build_excluded_sets(client):
+    excluded_usernames = set()
+    excluded_ids = set()
+
+    for item in EXCLUDED_LINKS_OR_USERNAMES:
+        username = extract_username_from_link(item)
+        if username:
+            excluded_usernames.add(username.lower())
+            try:
+                ent = await client.get_entity(username)
+                excluded_ids.add(int(ent.id))
+            except Exception:
+                pass
+            continue
+        if item.startswith("http"):
+            try:
+                ent = await client.get_entity(item)
+                excluded_ids.add(int(ent.id))
+            except Exception:
+                pass
+
+    logging.info(f"Excluded usernames: {excluded_usernames}")
+    logging.info(f"Excluded IDs: {excluded_ids}")
+    return excluded_usernames, excluded_ids
+
+# -------------------- Admin guruhlar --------------------
+async def get_admin_groups(client, excluded_usernames, excluded_ids):
     try:
         if not await ensure_connection(client):
-            raise Exception("Client is not connected")
+            return []
 
         dialogs = await client(GetDialogsRequest(
             offset_date=None,
@@ -62,145 +124,109 @@ async def get_admin_groups(client):
         admin_groups = []
         for dialog in dialogs.chats:
             if hasattr(dialog, 'admin_rights') and dialog.admin_rights:
+                chat_id = int(getattr(dialog, "id", 0))
+                chat_username = getattr(dialog, "username", None)
+                if chat_id in excluded_ids:
+                    logging.info(f"⛔ Excluded by ID: {getattr(dialog, 'title', chat_username)}")
+                    continue
+                if chat_username and chat_username.lower() in excluded_usernames:
+                    logging.info(f"⛔ Excluded by username: {getattr(dialog, 'title', chat_username)}")
+                    continue
                 admin_groups.append(dialog)
-                logging.info(f"Found admin group: {dialog.title}")
+                logging.info(f"✅ Added admin group: {getattr(dialog, 'title', chat_username)}")
 
-        for group_username in ADDITIONAL_GROUPS:
+        # Qo‘shimcha guruhlar
+        for group_ref in ADDITIONAL_GROUPS:
             try:
-                group = await client.get_entity(group_username)
-                admin_groups.append(group)
-                logging.info(f"Added additional group: {group.title}")
+                ref_username = extract_username_from_link(group_ref)
+                if ref_username and ref_username.lower() in excluded_usernames:
+                    continue
+                group_ent = await client.get_entity(group_ref)
+                if int(group_ent.id) in excluded_ids:
+                    continue
+                admin_groups.append(group_ent)
             except Exception as e:
-                logging.error(f"Error adding group {group_username}: {str(e)}")
+                logging.error(f"Error adding additional group {group_ref}: {e}")
 
         return admin_groups
     except FloodWaitError as e:
-        logging.warning(f"FloodWaitError in get_admin_groups: Waiting {e.seconds} seconds")
+        logging.warning(f"Flood wait: {e.seconds}s")
         await asyncio.sleep(e.seconds + 5)
         return []
-    except Exception as e:
-        logging.error(f"Error fetching groups: {str(e)}")
-        return []
 
+# -------------------- Postlarni olish --------------------
 async def get_navoiy_uy_joy_posts(client, min_id=0, limit=100000):
-    """Fetch posts from the source channel starting from min_id"""
     try:
         if not await ensure_connection(client):
-            raise Exception("Client is not connected")
+            return [], min_id
 
         channel = await client.get_entity(NAVOIY_UY_JOY_CHANNEL_USERNAME)
         messages = await client.get_messages(channel, limit=limit, min_id=min_id)
 
         if not messages:
-            logging.info("No posts found.")
             return [], min_id
 
-        # Group posts by grouped_id
         grouped_posts = {}
         for msg in messages:
-            if msg.grouped_id:
-                grouped_posts.setdefault(msg.grouped_id, []).append(msg)
-            else:
-                grouped_posts[msg.id] = [msg]
+            key = msg.grouped_id if msg.grouped_id else msg.id
+            grouped_posts.setdefault(key, []).append(msg)
 
-        sorted_groups = []
-        for group_id in sorted(grouped_posts.keys()):
-            sorted_groups.append(grouped_posts[group_id])
-
-        next_min_id = messages[0].id if messages else min_id
-        logging.info(f"Fetched {len(sorted_groups)} post groups, next min_id: {next_min_id}")
+        sorted_groups = [grouped_posts[k] for k in sorted(grouped_posts.keys())]
+        next_min_id = max(m.id for m in messages) if messages else min_id
         return sorted_groups, next_min_id
     except FloodWaitError as e:
-        logging.warning(f"FloodWaitError in get_navoiy_uy_joy_posts: Waiting {e.seconds} seconds")
         await asyncio.sleep(e.seconds + 5)
         return [], min_id
-    except Exception as e:
-        logging.error(f"Error fetching posts: {str(e)}")
-        return [], min_id
 
+# -------------------- Main --------------------
 async def main():
-    # Initialize Telegram client
     client = TelegramClient(session_file, api_id, api_hash)
 
-    # Check and clean session file if corrupted
     if os.path.exists(session_file):
         try:
             await client.connect()
             if not await client.is_user_authorized():
-                logging.warning("Session is invalid. Removing and recreating...")
                 os.remove(session_file)
         except Exception:
-            logging.warning("Session file is corrupted. Removing...")
             os.remove(session_file)
 
     try:
         await client.start(phone)
-        logging.info("Successfully connected to Telegram!")
-    except SessionPasswordNeededError:
-        logging.error("Two-factor authentication required. Please provide the password.")
-        return
-    except PhoneNumberBannedError:
-        logging.error("Phone number is banned. Please use another number.")
-        return
-    except SessionRevokedError:
-        logging.error("Session revoked. Please remove session file and re-authenticate.")
-        return
+        logging.info("Connected to Telegram!")
     except Exception as e:
-        logging.error(f"Error connecting to Telegram: {str(e)}")
+        logging.error(f"Connection error: {e}")
         return
 
-    try:
-        navoiy_uy_joy_posts, next_min_id = await get_navoiy_uy_joy_posts(client, min_id=0)
+    excluded_usernames, excluded_ids = await build_excluded_sets(client)
 
-        while True:
-            if not is_working_time():
-                logging.info("Outside working hours. Waiting 60 seconds...")
-                await asyncio.sleep(60)
-                continue
+    navoiy_uy_joy_posts, next_min_id = await get_navoiy_uy_joy_posts(client, min_id=0)
 
-            admin_groups = await get_admin_groups(client)
-            if not admin_groups:
-                logging.warning("No admin groups found. Waiting 60 seconds...")
-                await asyncio.sleep(60)
-                continue
+    while True:
+        if not is_working_time():
+            await asyncio.sleep(60)
+            continue
 
-            for group in admin_groups:
-                logging.info(f"⬇️ Forwarding to {group.title}...")
+        admin_groups = await get_admin_groups(client, excluded_usernames, excluded_ids)
+        if not admin_groups:
+            await asyncio.sleep(60)
+            continue
 
-                for group_messages in navoiy_uy_joy_posts:
-                    message_ids = [msg.id for msg in group_messages if msg.id]
+        for group in admin_groups:
+            for group_messages in navoiy_uy_joy_posts:
+                message_ids = [msg.id for msg in group_messages if msg]
+                if message_ids:
+                    try:
+                        await client.forward_messages(group.id, message_ids, NAVOIY_UY_JOY_CHANNEL_USERNAME)
+                        await asyncio.sleep(10)
+                    except FloodWaitError as e:
+                        await asyncio.sleep(e.seconds + 5)
+                    except Exception:
+                        continue
+            await asyncio.sleep(30)
 
-                    if message_ids:
-                        try:
-                            if not await ensure_connection(client):
-                                logging.error("Cannot forward messages: Client disconnected")
-                                continue
-                            await client.forward_messages(group.id, message_ids, NAVOIY_UY_JOY_CHANNEL_USERNAME)
-                            logging.info(f"✅ Forwarded to {group.title}: {message_ids}")
-                            await asyncio.sleep(10)  # Avoid flooding
-                        except FloodWaitError as e:
-                            logging.warning(f"FloodWait: Waiting {e.seconds} seconds")
-                            await asyncio.sleep(e.seconds + 5)
-                        except Exception as e:
-                            logging.error(f"Error forwarding to {group.title}: {str(e)}")
-                            continue
-
-                logging.info(f"✅ Completed forwarding to {group.title}. Waiting 30 seconds.")
-                await asyncio.sleep(30)
-
-            logging.info("🔄 Preparing for next cycle...")
-            navoiy_uy_joy_posts, next_min_id = await get_navoiy_uy_joy_posts(client, min_id=next_min_id)
-            if not navoiy_uy_joy_posts:
-                logging.info("No new posts. Waiting 5 minutes...")
-                await asyncio.sleep(300)
-
-    except Exception as e:
-        logging.error(f"Main loop error: {str(e)}")
-        await asyncio.sleep(60)
-    finally:
-        if client.is_connected():
-            await client.disconnect()
-            logging.info("Client disconnected gracefully.")
+        navoiy_uy_joy_posts, next_min_id = await get_navoiy_uy_joy_posts(client, min_id=next_min_id)
+        if not navoiy_uy_joy_posts:
+            await asyncio.sleep(300)
 
 if __name__ == "__main__":
     asyncio.run(main())
