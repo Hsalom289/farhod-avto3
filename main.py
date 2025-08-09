@@ -1,12 +1,11 @@
 from telethon.sync import TelegramClient
 from telethon.tl.functions.messages import GetDialogsRequest
-from telethon.tl.types import InputPeerEmpty, KeyboardButton, ReplyKeyboardMarkup, InlineKeyboardButton, InlineKeyboardMarkup
+from telethon.tl.types import InputPeerEmpty
 from telethon.errors import FloodWaitError, SessionPasswordNeededError, PhoneNumberBannedError, SessionRevokedError
 import asyncio
 from datetime import datetime, time as dt_time, timezone, timedelta
 import logging
 import os
-from telethon import events
 
 # Logging configuration (console only)
 logging.basicConfig(
@@ -119,70 +118,6 @@ async def get_navoiy_uy_joy_posts(client, min_id=0, limit=100000):
         logging.error(f"Error fetching posts: {str(e)}")
         return [], min_id
 
-async def send_tekin_reklama_message(client, group, message_text="Tekin Reklama"):
-    """Send a message with Tekin Reklama button to a group"""
-    try:
-        if not await ensure_connection(client):
-            raise Exception("Client is not connected")
-        
-        # Create inline keyboard with Tekin Reklama button
-        keyboard = [
-            [InlineKeyboardButton("🆓 Tekin Reklama", callback_data="tekin_reklama")]
-        ]
-        reply_markup = InlineKeyboardMarkup(keyboard)
-        
-        # Send message with inline keyboard
-        await client.send_message(group.id, message_text, buttons=reply_markup)
-        logging.info(f"✅ Sent Tekin Reklama message to {group.title}")
-        
-    except FloodWaitError as e:
-        logging.warning(f"FloodWaitError in send_tekin_reklama_message: Waiting {e.seconds} seconds")
-        await asyncio.sleep(e.seconds + 5)
-    except Exception as e:
-        logging.error(f"Error sending Tekin Reklama message to {group.title}: {str(e)}")
-
-async def handle_tekin_reklama_callback(client, callback_query):
-    """Handle callback when Tekin Reklama button is pressed"""
-    try:
-        user_id = callback_query.from_id
-        chat_id = callback_query.chat_id
-        
-        # Send response message
-        response_text = "🎉 Tabriklaymiz! Sizning reklamangiz tekin yuborildi.\n\n📝 Reklama qoidalari:\n• Maxsus xizmatlar uchun to'lov talab qilinadi\n• Oddiy e'lonlar bepul\n• Spam va nojo'ya kontent taqiqlanadi"
-        
-        await client.send_message(chat_id, response_text)
-        logging.info(f"✅ Handled Tekin Reklama callback from user {user_id}")
-        
-    except Exception as e:
-        logging.error(f"Error handling Tekin Reklama callback: {str(e)}")
-
-async def send_periodic_tekin_reklama(client, admin_groups):
-    """Send Tekin Reklama message to all admin groups periodically"""
-    try:
-        for group in admin_groups:
-            try:
-                tekin_message = """🆓 **Tekin Reklama Xizmati**
-
-📢 O'zingizning e'loningizni bepul joylashtiring!
-💡 Maxsus xizmatlar uchun admin bilan bog'laning.
-
-🎯 **Xizmatlar:**
-• Bepul e'lonlar
-• Maxsus joylashtirish
-• Yuqori ko'rsatkichlar
-
-📞 Bog'lanish: @admin_username"""
-                
-                await send_tekin_reklama_message(client, group, tekin_message)
-                await asyncio.sleep(5)  # Small delay between groups
-                
-            except Exception as e:
-                logging.error(f"Error sending Tekin Reklama to {group.title}: {str(e)}")
-                continue
-                
-    except Exception as e:
-        logging.error(f"Error in send_periodic_tekin_reklama: {str(e)}")
-
 async def main():
     # Initialize Telegram client
     client = TelegramClient(session_file, api_id, api_hash)
@@ -201,13 +136,6 @@ async def main():
     try:
         await client.start(phone)
         logging.info("Successfully connected to Telegram!")
-        
-        # Add callback query handler for Tekin Reklama button
-        @client.on(events.CallbackQuery)
-        async def callback_handler(event):
-            if event.data == b'tekin_reklama':
-                await handle_tekin_reklama_callback(client, event)
-        
     except SessionPasswordNeededError:
         logging.error("Two-factor authentication required. Please provide the password.")
         return
@@ -257,14 +185,6 @@ async def main():
                             logging.error(f"Error forwarding to {group.title}: {str(e)}")
                             continue
 
-                # Send Tekin Reklama message to each group
-                try:
-                    tekin_message = "🆓 **Tekin Reklama Xizmati**\n\n📢 O'zingizning e'loningizni bepul joylashtiring!\n💡 Maxsus xizmatlar uchun admin bilan bog'laning."
-                    await send_tekin_reklama_message(client, group, tekin_message)
-                    await asyncio.sleep(5)  # Small delay between messages
-                except Exception as e:
-                    logging.error(f"Error sending Tekin Reklama to {group.title}: {str(e)}")
-
                 logging.info(f"✅ Completed forwarding to {group.title}. Waiting 30 seconds.")
                 await asyncio.sleep(30)
 
@@ -273,13 +193,6 @@ async def main():
             if not navoiy_uy_joy_posts:
                 logging.info("No new posts. Waiting 5 minutes...")
                 await asyncio.sleep(300)
-            
-            # Send periodic Tekin Reklama messages every 6 hours
-            current_hour = datetime.now().hour
-            if current_hour % 6 == 0:  # Every 6 hours
-                logging.info("📢 Sending periodic Tekin Reklama messages...")
-                await send_periodic_tekin_reklama(client, admin_groups)
-                logging.info("✅ Completed sending periodic Tekin Reklama messages")
 
     except Exception as e:
         logging.error(f"Main loop error: {str(e)}")
