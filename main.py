@@ -9,8 +9,9 @@ import os
 from urllib.parse import urlparse
 
 # === SETTINGS ===
-POST_DELAY_SECONDS = 8       # Har postdan keyin kutish
-GROUP_DELAY_SECONDS = 30     # Guruhdan keyin kutish
+POST_DELAY_SECONDS = 8        # Har postdan keyin kutish
+GROUP_DELAY_SECONDS = 30      # Guruhdan keyin kutish
+CHECK_NEW_POSTS_EVERY = 30    # Yangi postlarni tekshirish oraliği (sek)
 
 # Logging
 logging.basicConfig(
@@ -64,13 +65,9 @@ async def ensure_connection(client):
         return False
 
 async def resolve_excluded_ids(client):
-    """
-    EXCLUDED_TARGETS ichidagi link/username’larni entity ID ga aylantirib, set qaytaradi.
-    """
     excluded_ids = set()
     for item in EXCLUDED_TARGETS:
         try:
-            # Telethon get_entity() invite linkni ham, username’ni ham qabul qiladi
             ent = await client.get_entity(item)
             excluded_ids.add(ent.id)
             title = getattr(ent, "title", getattr(ent, "username", str(ent.id)))
@@ -79,11 +76,69 @@ async def resolve_excluded_ids(client):
             logging.warning(f"Could not resolve EXCLUDED target: {item} -> {e}")
     return excluded_ids
 
+def group_messages(messages):
+    """
+    Kelayotgan xabarlar ro‘yxatini (Message obyektlari) albom bo‘yicha birlashtiradi
+    va xronologik (eski -> yangi) tartibda ro‘yxatlar ro‘yxatini qaytaradi.
+    """
+    grouped = {}
+    for msg in messages:
+        key = msg.grouped_id if msg.grouped_id else msg.id
+        grouped.setdefault(key, []).append(msg)
+
+    # group kalitlari bo‘yicha tartiblash (xronologik)
+    out = []
+    for key in sorted(grouped.keys()):
+        # Albom ichidagi xabarlarni ham tartibga solamiz
+        out.append(sorted(grouped[key], key=lambda m: m.id))
+    return out
+
+async def get_latest_message_id(client):
+    if not await ensure_connection(client):
+        return 0
+    channel_username = normalize_channel(SOURCE_CHANNEL)
+    channel = await client.get_entity(channel_username)
+    latest = await client.get_messages(channel, limit=1)
+    if latest and latest[0]:
+        return latest[0].id
+    return 0
+
+async def fetch_new_groups_since(client, since_id):
+    """
+    since_id dan katta bo‘lgan YANGI xabarlarni olib, albom bo‘yicha guruhlab qaytaradi.
+    """
+    try:
+        if not await ensure_connection(client):
+            return [], since_id
+
+        channel_username = normalize_channel(SOURCE_CHANNEL)
+        channel = await client.get_entity(channel_username)
+
+        # iter_messages odatda yangi->eski beradi; min_id bilan since_id dan kattalarini olamiz
+        new_msgs = []
+        async for msg in client.iter_messages(channel, min_id=since_id):
+            # Ba'zan xizmat xabarlari bo‘ladi; faqat haqiqiy xabarlarni qoldiramiz
+            if getattr(msg, "id", None):
+                new_msgs.append(msg)
+
+        if not new_msgs:
+            return [], since_id
+
+        # Xronologik tarqatish uchun eski->yangi tartibda guruhlaymiz
+        new_groups = group_messages(new_msgs)
+        # Oxirgi ko‘rilgan id ni yangilash (kelganlar ichidagi eng kattasi)
+        new_last_seen = max(m.id for m in new_msgs)
+        return new_groups, new_last_seen
+
+    except FloodWaitError as e:
+        logging.warning(f"FloodWaitError in fetch_new_groups_since: Waiting {e.seconds} seconds")
+        await asyncio.sleep(e.seconds + 5)
+        return [], since_id
+    except Exception as e:
+        logging.error(f"Error fetching new posts: {str(e)}")
+        return [], since_id
+
 async def get_admin_groups(client, excluded_ids):
-    """
-    Dialoglardan admin bo'lganlarini + ADDITIONAL_GROUPS dagilarni yig‘adi,
-    so‘ngra excluded_ids bo‘yicha filtrlaydi.
-    """
     try:
         if not await ensure_connection(client):
             return []
@@ -97,10 +152,8 @@ async def get_admin_groups(client, excluded_ids):
         ))
 
         admin_groups = []
-        # Admin bo‘lgan chatlar
         for dialog in dialogs.chats:
             try:
-                # admin_rights mavjud bo‘lsa (kanal/guruh bo‘lishi mumkin)
                 if hasattr(dialog, 'admin_rights') and dialog.admin_rights:
                     if dialog.id not in excluded_ids:
                         admin_groups.append(dialog)
@@ -110,7 +163,6 @@ async def get_admin_groups(client, excluded_ids):
             except Exception:
                 continue
 
-        # Majburiy qo‘shiladiganlar
         for group_username in ADDITIONAL_GROUPS:
             try:
                 group = await client.get_entity(group_username)
@@ -122,7 +174,6 @@ async def get_admin_groups(client, excluded_ids):
             except Exception as e:
                 logging.error(f"Error adding target {group_username}: {str(e)}")
 
-        # ID bo‘yicha dublikatlarni olib tashlash
         uniq = {}
         for g in admin_groups:
             uniq[g.id] = g
@@ -136,41 +187,6 @@ async def get_admin_groups(client, excluded_ids):
         return []
     except Exception as e:
         logging.error(f"Error fetching groups: {str(e)}")
-        return []
-
-async def get_all_source_posts(client, limit=100000):
-    """Manbadan eng eski postdan boshlab hammasini olish"""
-    try:
-        if not await ensure_connection(client):
-            return []
-
-        channel_username = normalize_channel(SOURCE_CHANNEL)
-        channel = await client.get_entity(channel_username)
-        messages = await client.get_messages(channel, limit=limit)
-
-        if not messages:
-            logging.info("No posts found.")
-            return []
-
-        grouped_posts = {}
-        for msg in messages:
-            if msg.grouped_id:
-                grouped_posts.setdefault(msg.grouped_id, []).append(msg)
-            else:
-                grouped_posts[msg.id] = [msg]
-
-        sorted_groups = []
-        for group_id in sorted(grouped_posts.keys()):
-            sorted_groups.append(grouped_posts[group_id])
-
-        logging.info(f"Fetched {len(sorted_groups)} post groups from source.")
-        return sorted_groups
-    except FloodWaitError as e:
-        logging.warning(f"FloodWaitError in get_all_source_posts: Waiting {e.seconds} seconds")
-        await asyncio.sleep(e.seconds + 5)
-        return []
-    except Exception as e:
-        logging.error(f"Error fetching posts: {str(e)}")
         return []
 
 async def main():
@@ -203,16 +219,23 @@ async def main():
         return
 
     try:
-        # ❗️Avval exclusion’larni ID ga aylantirib olamiz
         excluded_ids = await resolve_excluded_ids(client)
         logging.info(f"Excluded IDs: {excluded_ids if excluded_ids else 'none'}")
 
-        source_posts = await get_all_source_posts(client)
+        # START: tarixni qayta tarqatmaslik uchun hozirgi eng so'nggi post ID ni olamiz
+        last_seen_id = await get_latest_message_id(client)
+        logging.info(f"Starting from last_seen_id={last_seen_id} (only new posts will be forwarded)")
 
         while True:
             if not is_working_time():
                 logging.info("Outside working hours. Waiting...")
                 await asyncio.sleep(60)
+                continue
+
+            # 1) Yangi postlar bormi – tekshiramiz
+            new_groups, new_last_seen = await fetch_new_groups_since(client, last_seen_id)
+            if not new_groups:
+                await asyncio.sleep(CHECK_NEW_POSTS_EVERY)
                 continue
 
             admin_groups = await get_admin_groups(client, excluded_ids)
@@ -221,35 +244,38 @@ async def main():
                 await asyncio.sleep(60)
                 continue
 
+            # 2) Yangi postlar mavjud – hamma targetlarga forward qilamiz
             for group in admin_groups:
                 title = getattr(group, "title", getattr(group, "username", str(group.id)))
-                logging.info(f"⬇️ Forwarding to {title} (id={group.id})...")
+                logging.info(f"⬇️ Forwarding NEW posts to {title} (id={group.id})...")
 
-                for group_messages in source_posts:
+                for group_messages in new_groups:
                     message_ids = [msg.id for msg in group_messages if msg.id]
-
-                    if message_ids:
-                        try:
-                            if not await ensure_connection(client):
-                                continue
-                            await client.forward_messages(
-                                group,  # entity’ning o‘zini berish xavfsizroq
-                                message_ids,
-                                normalize_channel(SOURCE_CHANNEL)
-                            )
-                            logging.info(f"✅ Forwarded to {title}: {message_ids}")
-                            await asyncio.sleep(POST_DELAY_SECONDS)
-                        except FloodWaitError as e:
-                            logging.warning(f"FloodWait: Waiting {e.seconds} seconds")
-                            await asyncio.sleep(e.seconds + 5)
-                        except Exception as e:
-                            logging.error(f"Error forwarding to {title}: {str(e)}")
+                    if not message_ids:
+                        continue
+                    try:
+                        if not await ensure_connection(client):
                             continue
+                        await client.forward_messages(
+                            group,
+                            message_ids,
+                            normalize_channel(SOURCE_CHANNEL)
+                        )
+                        logging.info(f"✅ Forwarded to {title}: {message_ids}")
+                        await asyncio.sleep(POST_DELAY_SECONDS)
+                    except FloodWaitError as e:
+                        logging.warning(f"FloodWait: Waiting {e.seconds} seconds")
+                        await asyncio.sleep(e.seconds + 5)
+                    except Exception as e:
+                        logging.error(f"Error forwarding to {title}: {str(e)}")
+                        continue
 
                 logging.info(f"✅ Done with {title}. Waiting {GROUP_DELAY_SECONDS} sec.")
                 await asyncio.sleep(GROUP_DELAY_SECONDS)
 
-            logging.info("🔄 Cycle finished. Starting from first post again.")
+            # 3) Muvaffaqiyatli tarqatilgach, last_seen_id ni yangilaymiz
+            last_seen_id = max(last_seen_id, new_last_seen)
+            logging.info(f"🔄 Cycle finished. Updated last_seen_id={last_seen_id}. Checking again soon...")
 
     except Exception as e:
         logging.error(f"Main loop error: {str(e)}")
