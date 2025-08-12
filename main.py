@@ -9,9 +9,12 @@ import os
 from urllib.parse import urlparse
 
 # === SETTINGS ===
-POST_DELAY_SECONDS = 8        # Har postdan keyin kutish
-GROUP_DELAY_SECONDS = 30      # Guruhdan keyin kutish
-CHECK_NEW_POSTS_EVERY = 30    # Yangi postlarni tekshirish oraliği (sek)
+POST_DELAY_SECONDS = 8            # Har postdan keyin kutish
+GROUP_DELAY_SECONDS = 30          # Guruhdan keyin kutish
+CHECK_NEW_POSTS_EVERY = 30        # Yangi postlarni tekshirish oraliği (sekund)
+SEND_HISTORY_ON_FIRST_RUN = False # True qilsangiz birinchi ishga tushganda tarix ham ketadi
+
+LAST_SEEN_FILE = "last_seen_id.txt"
 
 # Logging
 logging.basicConfig(
@@ -20,7 +23,7 @@ logging.basicConfig(
     handlers=[logging.StreamHandler()]
 )
 
-# Telegram API credentials
+# Telegram API credentials (o'zingizniki)
 api_id = 16072756
 api_hash = '5fc7839a0d020c256e5c901cebd21bb7'
 phone = '+998335217424'
@@ -35,10 +38,17 @@ ADDITIONAL_GROUPS = [
     "Navoiy_uy_joy_savdosi"
 ]
 
-# ❗️HECH QACHON TARQATILMAYDIGAN targetlar (invite link yoki username)
+# ❗️UMUMAN TARQATILMAYDIGAN targetlar (siz berganlar + xohlasangiz yana qo‘shing)
 EXCLUDED_TARGETS = [
-    "https://t.me/+lHIK53jRNKM3NDky",  # siz bergan havola
-    # "username_yoki_boshqa_linkni_bu_yerga_qo'shishingiz_mumkin"
+    "https://t.me/Navoiy_uy_barcha_elonlar_bazasi",
+    "https://t.me/Navoiy_uy_joy_kv_barcha_elonlar",
+    "https://t.me/+6e1vw3QlFLg1Zjcy",
+    "https://t.me/+N9nRAUGPEl43YmFi",
+    "https://t.me/Navoiy_1_xona_kvartira",
+    "https://t.me/Navoiy_2_xona_kvartira",
+    "https://t.me/Navoiy_3_4_5_xona_kvartira",
+    "https://t.me/Navoiy_ijaraga_kv_uy",
+    "https://t.me/Navoiy_hovli_katedj_dacha",
 ]
 
 def normalize_channel(value: str) -> str:
@@ -65,6 +75,10 @@ async def ensure_connection(client):
         return False
 
 async def resolve_excluded_ids(client):
+    """
+    EXCLUDED_TARGETS ichidagi link/username’larni entity ID ga aylantirib, set qaytaradi.
+    Join bo‘lmagan private linklar resolve bo‘lmasligi mumkin – log’da ko‘rasiz.
+    """
     excluded_ids = set()
     for item in EXCLUDED_TARGETS:
         try:
@@ -78,22 +92,25 @@ async def resolve_excluded_ids(client):
 
 def group_messages(messages):
     """
-    Kelayotgan xabarlar ro‘yxatini (Message obyektlari) albom bo‘yicha birlashtiradi
-    va xronologik (eski -> yangi) tartibda ro‘yxatlar ro‘yxatini qaytaradi.
+    Xabarlar ro‘yxatini albom (grouped_id) bo‘yicha birlashtiradi.
+    Natija: [ [msg,msg,...], [msg], ... ] eski->yangi tartibda.
     """
     grouped = {}
     for msg in messages:
+        if not getattr(msg, "id", None):
+            continue
         key = msg.grouped_id if msg.grouped_id else msg.id
         grouped.setdefault(key, []).append(msg)
 
-    # group kalitlari bo‘yicha tartiblash (xronologik)
     out = []
     for key in sorted(grouped.keys()):
-        # Albom ichidagi xabarlarni ham tartibga solamiz
         out.append(sorted(grouped[key], key=lambda m: m.id))
     return out
 
 async def get_latest_message_id(client):
+    """
+    SOURCE ichidagi eng oxirgi xabar ID.
+    """
     if not await ensure_connection(client):
         return 0
     channel_username = normalize_channel(SOURCE_CHANNEL)
@@ -102,6 +119,22 @@ async def get_latest_message_id(client):
     if latest and latest[0]:
         return latest[0].id
     return 0
+
+def load_last_seen():
+    if os.path.exists(LAST_SEEN_FILE):
+        try:
+            with open(LAST_SEEN_FILE, "r", encoding="utf-8") as f:
+                return int(f.read().strip() or "0")
+        except Exception:
+            return 0
+    return None  # fayl yo‘q
+
+def save_last_seen(value: int):
+    try:
+        with open(LAST_SEEN_FILE, "w", encoding="utf-8") as f:
+            f.write(str(value))
+    except Exception as e:
+        logging.warning(f"Could not save last_seen_id: {e}")
 
 async def fetch_new_groups_since(client, since_id):
     """
@@ -114,19 +147,16 @@ async def fetch_new_groups_since(client, since_id):
         channel_username = normalize_channel(SOURCE_CHANNEL)
         channel = await client.get_entity(channel_username)
 
-        # iter_messages odatda yangi->eski beradi; min_id bilan since_id dan kattalarini olamiz
+        # iter_messages: min_id=since_id => id > since_id (yangi->eski oqimda keladi)
         new_msgs = []
         async for msg in client.iter_messages(channel, min_id=since_id):
-            # Ba'zan xizmat xabarlari bo‘ladi; faqat haqiqiy xabarlarni qoldiramiz
             if getattr(msg, "id", None):
                 new_msgs.append(msg)
 
         if not new_msgs:
             return [], since_id
 
-        # Xronologik tarqatish uchun eski->yangi tartibda guruhlaymiz
         new_groups = group_messages(new_msgs)
-        # Oxirgi ko‘rilgan id ni yangilash (kelganlar ichidagi eng kattasi)
         new_last_seen = max(m.id for m in new_msgs)
         return new_groups, new_last_seen
 
@@ -139,6 +169,9 @@ async def fetch_new_groups_since(client, since_id):
         return [], since_id
 
 async def get_admin_groups(client, excluded_ids):
+    """
+    Dialoglardan admin bo‘lganlarni + ADDITIONAL_GROUPS dagilarni yig‘adi, excluded_ids bo‘yicha filtrlaydi.
+    """
     try:
         if not await ensure_connection(client):
             return []
@@ -152,6 +185,7 @@ async def get_admin_groups(client, excluded_ids):
         ))
 
         admin_groups = []
+        # Admin bo‘lgan chatlar
         for dialog in dialogs.chats:
             try:
                 if hasattr(dialog, 'admin_rights') and dialog.admin_rights:
@@ -163,6 +197,7 @@ async def get_admin_groups(client, excluded_ids):
             except Exception:
                 continue
 
+        # Majburiy qo‘shiladiganlar
         for group_username in ADDITIONAL_GROUPS:
             try:
                 group = await client.get_entity(group_username)
@@ -174,6 +209,7 @@ async def get_admin_groups(client, excluded_ids):
             except Exception as e:
                 logging.error(f"Error adding target {group_username}: {str(e)}")
 
+        # Dublikatlarni ID bo‘yicha yo‘qotish
         uniq = {}
         for g in admin_groups:
             uniq[g.id] = g
@@ -192,6 +228,7 @@ async def get_admin_groups(client, excluded_ids):
 async def main():
     client = TelegramClient(session_file, api_id, api_hash)
 
+    # Session tekshiruvi
     if os.path.exists(session_file):
         try:
             await client.connect()
@@ -202,6 +239,7 @@ async def main():
             logging.warning("Session file corrupted, removing...")
             os.remove(session_file)
 
+    # Start
     try:
         await client.start(phone)
         logging.info("Successfully connected to Telegram!")
@@ -222,9 +260,20 @@ async def main():
         excluded_ids = await resolve_excluded_ids(client)
         logging.info(f"Excluded IDs: {excluded_ids if excluded_ids else 'none'}")
 
-        # START: tarixni qayta tarqatmaslik uchun hozirgi eng so'nggi post ID ni olamiz
-        last_seen_id = await get_latest_message_id(client)
-        logging.info(f"Starting from last_seen_id={last_seen_id} (only new posts will be forwarded)")
+        # last_seen_id ni aniqlash (fayldan yoki konfiguratsiyaga ko‘ra)
+        stored = load_last_seen()
+        if stored is None:
+            if SEND_HISTORY_ON_FIRST_RUN:
+                last_seen_id = 0
+                logging.info("No last_seen file. Will send HISTORY on first run.")
+            else:
+                last_seen_id = await get_latest_message_id(client)
+                logging.info("No last_seen file. Will start from current latest (no history).")
+        else:
+            last_seen_id = stored
+            logging.info(f"Loaded last_seen_id from file: {last_seen_id}")
+
+        logging.info(f"Starting with last_seen_id={last_seen_id}")
 
         while True:
             if not is_working_time():
@@ -232,32 +281,38 @@ async def main():
                 await asyncio.sleep(60)
                 continue
 
-            # 1) Yangi postlar bormi – tekshiramiz
+            # 1) Yangi postlar bormi?
             new_groups, new_last_seen = await fetch_new_groups_since(client, last_seen_id)
             if not new_groups:
                 await asyncio.sleep(CHECK_NEW_POSTS_EVERY)
                 continue
 
+            # 2) Targetlar
             admin_groups = await get_admin_groups(client, excluded_ids)
             if not admin_groups:
                 logging.warning("No admin groups found. Waiting...")
                 await asyncio.sleep(60)
                 continue
 
-            # 2) Yangi postlar mavjud – hamma targetlarga forward qilamiz
+            # 3) Yangi postlarni hamma targetlarga forward qilish
             for group in admin_groups:
+                # 🔒 qo‘shimcha xavfsizlik: excluded targetni send loopda ham tekshiramiz
+                if getattr(group, "id", None) in excluded_ids:
+                    logging.info(f"Skipped excluded target at send loop: id={group.id}")
+                    continue
+
                 title = getattr(group, "title", getattr(group, "username", str(group.id)))
                 logging.info(f"⬇️ Forwarding NEW posts to {title} (id={group.id})...")
 
                 for group_messages in new_groups:
-                    message_ids = [msg.id for msg in group_messages if msg.id]
+                    message_ids = [msg.id for msg in group_messages if getattr(msg, "id", None)]
                     if not message_ids:
                         continue
                     try:
                         if not await ensure_connection(client):
                             continue
                         await client.forward_messages(
-                            group,
+                            group,  # entity obyektini berish xavfsiz
                             message_ids,
                             normalize_channel(SOURCE_CHANNEL)
                         )
@@ -273,8 +328,9 @@ async def main():
                 logging.info(f"✅ Done with {title}. Waiting {GROUP_DELAY_SECONDS} sec.")
                 await asyncio.sleep(GROUP_DELAY_SECONDS)
 
-            # 3) Muvaffaqiyatli tarqatilgach, last_seen_id ni yangilaymiz
+            # 4) Muvaffaqiyatli tarqatilgach, last_seen_id ni yangilaymiz va saqlaymiz
             last_seen_id = max(last_seen_id, new_last_seen)
+            save_last_seen(last_seen_id)
             logging.info(f"🔄 Cycle finished. Updated last_seen_id={last_seen_id}. Checking again soon...")
 
     except Exception as e:
