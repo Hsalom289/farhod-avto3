@@ -27,7 +27,7 @@ logging.basicConfig(
 api_id = 16072756
 api_hash = '5fc7839a0d020c256e5c901cebd21bb7'
 phone = '+998335217424'
-session_file = 'session_name.session1'
+session_file = 'session_name.session'
 
 # SOURCE channel
 SOURCE_CHANNEL = "https://t.me/Navoiy_uy_barcha_elonlar_bazasi"
@@ -343,4 +343,5 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+
 
