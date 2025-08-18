@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-Forward bot (har siklda eski + yangi postlarni aylantiradi; guruhlarga va shaxsiylarga)
+Forward bot (har siklda eski + yangi postlarni aylantiradi; guruhlar va fallback copy)
 - Ish vaqti: 10:00–23:00 (Asia/Samarkand, UTC+5)
-- SOURCE kanalni har sikl o'qib, post/albomlarni guruhlarga va TARGET_USERS dagi shaxslarga forward qiladi
+- SOURCE kanalni har sikl o'qib, post/albomlarni guruhlarga forward/copy qiladi
+- Forward taqiqlangan bo'lsa: as_copy -> manual (matn/media) fallback
 """
 
 import asyncio
@@ -29,7 +30,7 @@ from telethon.tl.types import (
 POST_DELAY_SECONDS = 8            # har post/albomdan keyin kutish
 GROUP_DELAY_SECONDS = 30          # har targetdan keyin kutish
 CHECK_EVERY_SECONDS = 20          # sikllar orasida kutish
-REPLAY_LAST_N_GROUPS = None       # None -> hammasi; masalan 300 qo'ysangiz, faqat oxirgi 300 guruh
+REPLAY_LAST_N_GROUPS = 300        # None -> hammasi; tavsiya: 200–500 orasida
 
 # Telegram API credentials (o'zingizniki bilan to'ldiring)
 api_id = 16072756
@@ -40,19 +41,13 @@ session_file = 'session_name.session'
 # Manba kanal
 SOURCE_CHANNEL = "https://t.me/Navoiy_uy_barcha_elonlar_bazasi"
 
-# Guruhlar (majburiy qo'shiladigan username’lar)
+# Guruhlar (majburiy qo'shiladigan username/link’lar)
 ADDITIONAL_GROUPS = [
-    "Navoiy_uy_joy_kvartira_bozori",
-    "Navoiy_uy_joy_savdosi"
+    "https://t.me/Navoiy_uy_joy_kvartira_savdosi",
+    "https://t.me/Navoiy_uy_joy_savdosi",
 ]
 
-# Shaxsiy (private) targetlar — username yoki user ID
-TARGET_USERS = [
-    # "@username1",
-    # 123456789,
-]
-
-# Hech qachon yuborilmaydigan targetlar (kanal/guruh)
+# Hech qachon yuborilmaydigan targetlar (kanal/guruh) — manbani ham qo'shib qo'ying
 EXCLUDED_TARGETS = [
     "https://t.me/Navoiy_uy_barcha_elonlar_bazasi",
     "https://t.me/Navoiy_uy_joy_kv_barcha_elonlar",
@@ -208,7 +203,8 @@ async def get_admin_groups(client: TelegramClient, excluded_ids: set):
     # Majburiy qo'shiladiganlar (faqat guruh bo‘lsa)
     for username in ADDITIONAL_GROUPS:
         try:
-            ent = await client.get_entity(username)
+            uname = normalize_channel(username)
+            ent = await client.get_entity(uname)
             if ent.id in excluded_ids:
                 continue
             if not _is_valid_group(ent):
@@ -217,7 +213,7 @@ async def get_admin_groups(client: TelegramClient, excluded_ids: set):
             if ent.id not in seen:
                 admin_groups.append(ent)
                 seen.add(ent.id)
-                logging.info(f"Added additional target: {getattr(ent,'title',username)} (id={ent.id})")
+                logging.info(f"Added additional target: {getattr(ent,'title',uname)} (id={ent.id})")
         except Exception as e:
             logging.error(f"Error adding target {username}: {e}")
 
@@ -275,8 +271,12 @@ async def main():
 
             # 2) Guruh targetlar (admin bo'lganlar + qo'shimcha)
             admin_groups = await get_admin_groups(client, excluded_ids)
+            if not admin_groups:
+                logging.warning("No admin groups found. Waiting...")
+                await asyncio.sleep(60)
+                continue
 
-            # 3) GURUH(LAR)GA forward
+            # 3) GURUH(LAR)GA yuborish (forward/copy fallback)
             for group in admin_groups:
                 gid = getattr(group, "id", None)
                 if gid in excluded_ids:
@@ -291,73 +291,73 @@ async def main():
                     continue
 
                 title = getattr(group, "title", getattr(group, "username", str(gid)))
-                logging.info(f"⬇️ Forwarding ALL (old+new) to GROUP {title} (id={gid})...")
+                logging.info(f"⬇️ Sending ALL (old+new) to GROUP {title} (id={gid})...")
 
                 for msg_group in source_groups:
                     message_ids = [m.id for m in msg_group if getattr(m, "id", None)]
                     if not message_ids:
                         continue
+
+                    # 1) as_copy bilan urinib ko'ramiz (forward izi yo'q)
                     try:
                         if not await ensure_connection(client):
                             continue
                         await client.forward_messages(
-                            entity=target_peer,   # InputPeer (target group)
+                            entity=target_peer,
                             messages=message_ids,
-                            from_peer=source_ent  # Entity (source channel)
+                            from_peer=source_ent,
+                            as_copy=True
                         )
-                        logging.info(f"✅ Forwarded to GROUP {title}: {message_ids}")
+                        logging.info(f"✅ Copied (as_copy) to GROUP {title}: {message_ids}")
                         await asyncio.sleep(POST_DELAY_SECONDS)
+                        continue  # shu msg_group tugadi
 
                     except FloodWaitError as e:
-                        logging.warning(f"FloodWait (group): wait {e.seconds}s")
+                        logging.warning(f"FloodWait (group/as_copy): {e.seconds}s")
                         await asyncio.sleep(e.seconds + 5)
-                    except RPCError as e:
-                        logging.error(f"RPCError to GROUP {title}: {e}")
-                        break
-                    except Exception as e:
-                        logging.error(f"Error forwarding to GROUP {title}: {e}")
                         continue
+
+                    except RPCError as e:
+                        logging.warning(f"as_copy failed for {title}: {e} — trying manual copy...")
+
+                    # 2) Qo'lda nusxa: matn + media
+                    for m in msg_group:
+                        try:
+                            text = m.text or (m.message if hasattr(m, 'message') else "")
+                            if m.media:
+                                # Media yuklab, jo'natib ko'ramiz
+                                try:
+                                    data = await client.download_media(m, file=bytes)  # RAMga bytes
+                                    if data:
+                                        await client.send_file(
+                                            entity=target_peer,
+                                            file=data,
+                                            caption=text or ""
+                                        )
+                                    else:
+                                        if text:
+                                            await client.send_message(target_peer, text)
+                                except Exception as ee:
+                                    logging.warning(f"Media copy failed, text only: {ee}")
+                                    if text:
+                                        await client.send_message(target_peer, text)
+                            else:
+                                if text:
+                                    await client.send_message(target_peer, text)
+
+                            await asyncio.sleep(POST_DELAY_SECONDS)
+
+                        except FloodWaitError as e:
+                            logging.warning(f"FloodWait (group/manual): {e.seconds}s")
+                            await asyncio.sleep(e.seconds + 5)
+                        except RPCError as e:
+                            logging.error(f"RPCError (group/manual) to {title}: {e}")
+                            break
+                        except Exception as e:
+                            logging.error(f"Manual copy error to {title}: {e}")
+                            continue
 
                 logging.info(f"✅ Done with GROUP {title}. Waiting {GROUP_DELAY_SECONDS} sec.")
-                await asyncio.sleep(GROUP_DELAY_SECONDS)
-
-            # 4) SHAXSIY (PRIVATE) foydalanuvchilarga forward (faqat TARGET_USERS da borlar)
-            for u in TARGET_USERS:
-                try:
-                    user_peer = await client.get_input_entity(u)
-                except Exception as e:
-                    logging.error(f"Private target resolve failed (skip): {u} -> {e}")
-                    continue
-
-                title = str(getattr(user_peer, "user_id", u))
-                logging.info(f"⬇️ Forwarding ALL (old+new) to PRIVATE {title} ...")
-
-                for msg_group in source_groups:
-                    message_ids = [m.id for m in msg_group if getattr(m, "id", None)]
-                    if not message_ids:
-                        continue
-                    try:
-                        if not await ensure_connection(client):
-                            continue
-                        await client.forward_messages(
-                            entity=user_peer,     # private user
-                            messages=message_ids,
-                            from_peer=source_ent
-                        )
-                        logging.info(f"✅ Forwarded to PRIVATE {title}: {message_ids}")
-                        await asyncio.sleep(POST_DELAY_SECONDS)
-
-                    except FloodWaitError as e:
-                        logging.warning(f"FloodWait (private): wait {e.seconds}s")
-                        await asyncio.sleep(e.seconds + 5)
-                    except RPCError as e:
-                        logging.error(f"RPCError to PRIVATE {title}: {e}")
-                        break
-                    except Exception as e:
-                        logging.error(f"Error forwarding to PRIVATE {title}: {e}")
-                        continue
-
-                logging.info(f"✅ Done with PRIVATE {title}. Waiting {GROUP_DELAY_SECONDS} sec.")
                 await asyncio.sleep(GROUP_DELAY_SECONDS)
 
             logging.info(f"🔄 Cycle finished. Re-reading source in {CHECK_EVERY_SECONDS}s ...")
