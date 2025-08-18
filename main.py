@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-Forward bot (har siklda eski + yangi postlarni aylantiradi; guruhlar va fallback copy)
+Forward bot (har siklda eski + yangi postlarni aylantiradi; manual copy: text/media/album)
 - Ish vaqti: 10:00–23:00 (Asia/Samarkand, UTC+5)
-- SOURCE kanalni har sikl o'qib, post/albomlarni guruhlarga forward/copy qiladi
-- Forward taqiqlangan bo'lsa: as_copy -> manual (matn/media) fallback
+- SOURCE kanalni har sikl o‘qib, post/albomlarni guruhlarga manual nusxa qilib yuboradi
+- Telethon eski versiyalarida ham ishlaydi (as_copy YO'Q)
 """
 
 import asyncio
@@ -219,6 +219,78 @@ async def get_admin_groups(client: TelegramClient, excluded_ids: set):
 
     return admin_groups
 
+async def send_msg_group_manually(client: TelegramClient, target_peer, msg_group):
+    """
+    Bitta group (album/yakka) xabarni qo'lda nusxa qilib yuborish.
+    - Agar hammasi media bo'lsa: bitta jo'natishda album (send_file([...])).
+    - Aks holda: elementma-element (matn/send_file).
+    """
+    # Albom holatini tekshirish: barcha elementda media bormi?
+    all_media = all(getattr(m, "media", None) for m in msg_group)
+
+    if all_media and len(msg_group) > 1:
+        files = []
+        for m in msg_group:
+            try:
+                data = await client.download_media(m, file=bytes)  # RAM'ga bytes
+            except Exception as e:
+                data = None
+                logging.warning(f"Album item download failed, skipping media: {e}")
+            if data:
+                files.append(data)
+
+        if files:
+            # Albom caption faqat birinchi faylga qo'yiladi, shuning uchun 1-tekstni caption qilamiz
+            first_text = msg_group[0].text or (msg_group[0].message if hasattr(msg_group[0], 'message') else "")
+            try:
+                await client.send_file(
+                    entity=target_peer,
+                    file=files,          # list -> album
+                    caption=first_text or ""
+                )
+            except Exception as e:
+                logging.error(f"Album send_file failed: {e}")
+        else:
+            # Hech bo'lmasa matnlarni ketma-ket yuboramiz
+            for m in msg_group:
+                text = m.text or (m.message if hasattr(m, 'message') else "")
+                if text:
+                    try:
+                        await client.send_message(target_peer, text)
+                    except Exception as e:
+                        logging.error(f"Album-fallback text send failed: {e}")
+                await asyncio.sleep(POST_DELAY_SECONDS)
+        return
+
+    # Albom emas yoki aralash (matn/media) — elementma-element
+    for m in msg_group:
+        text = m.text or (m.message if hasattr(m, 'message') else "")
+        if getattr(m, "media", None):
+            # Media bor — yuklab, yuboramiz (yuklanmasa faqat matn)
+            try:
+                data = await client.download_media(m, file=bytes)
+                if data:
+                    await client.send_file(target_peer, data, caption=text or "")
+                else:
+                    if text:
+                        await client.send_message(target_peer, text)
+            except Exception as e:
+                logging.warning(f"Media copy failed, sending text only: {e}")
+                if text:
+                    try:
+                        await client.send_message(target_peer, text)
+                    except Exception as e2:
+                        logging.error(f"Text send failed after media error: {e2}")
+        else:
+            # Faqat matn
+            if text:
+                try:
+                    await client.send_message(target_peer, text)
+                except Exception as e:
+                    logging.error(f"Text send failed: {e}")
+
+        await asyncio.sleep(POST_DELAY_SECONDS)
+
 # ====================== MAIN LOOP ======================
 async def main():
     client = TelegramClient(session_file, api_id, api_hash)
@@ -270,20 +342,30 @@ async def main():
                 continue
 
             # 2) Guruh targetlar (admin bo'lganlar + qo'shimcha)
+            if not await ensure_connection(client):
+                await asyncio.sleep(5)
+                continue
+            dialogs = await client(GetDialogsRequest(
+                offset_date=None,
+                offset_id=0,
+                offset_peer=InputPeerEmpty(),
+                limit=200,
+                hash=0
+            ))
             admin_groups = await get_admin_groups(client, excluded_ids)
             if not admin_groups:
                 logging.warning("No admin groups found. Waiting...")
                 await asyncio.sleep(60)
                 continue
 
-            # 3) GURUH(LAR)GA yuborish (forward/copy fallback)
+            # 3) GURUH(LAR)GA yuborish (manual copy)
             for group in admin_groups:
                 gid = getattr(group, "id", None)
                 if gid in excluded_ids:
                     logging.info(f"Skipped excluded target at send loop: id={gid}")
                     continue
 
-                # Targetni InputPeerga aylantiramiz (Invalid Peer oldini oladi)
+                # Targetni InputPeerga aylantiramiz
                 try:
                     target_peer = await client.get_input_entity(group)
                 except Exception as e:
@@ -291,71 +373,22 @@ async def main():
                     continue
 
                 title = getattr(group, "title", getattr(group, "username", str(gid)))
-                logging.info(f"⬇️ Sending ALL (old+new) to GROUP {title} (id={gid})...")
+                logging.info(f"⬇️ Sending ALL (manual copy) to GROUP {title} (id={gid})...")
 
                 for msg_group in source_groups:
-                    message_ids = [m.id for m in msg_group if getattr(m, "id", None)]
-                    if not message_ids:
-                        continue
-
-                    # 1) as_copy bilan urinib ko'ramiz (forward izi yo'q)
                     try:
                         if not await ensure_connection(client):
                             continue
-                        await client.forward_messages(
-                            entity=target_peer,
-                            messages=message_ids,
-                            from_peer=source_ent,
-                            as_copy=True
-                        )
-                        logging.info(f"✅ Copied (as_copy) to GROUP {title}: {message_ids}")
-                        await asyncio.sleep(POST_DELAY_SECONDS)
-                        continue  # shu msg_group tugadi
-
+                        await send_msg_group_manually(client, target_peer, msg_group)
                     except FloodWaitError as e:
-                        logging.warning(f"FloodWait (group/as_copy): {e.seconds}s")
+                        logging.warning(f"FloodWait (group/manual): {e.seconds}s")
                         await asyncio.sleep(e.seconds + 5)
-                        continue
-
                     except RPCError as e:
-                        logging.warning(f"as_copy failed for {title}: {e} — trying manual copy...")
-
-                    # 2) Qo'lda nusxa: matn + media
-                    for m in msg_group:
-                        try:
-                            text = m.text or (m.message if hasattr(m, 'message') else "")
-                            if m.media:
-                                # Media yuklab, jo'natib ko'ramiz
-                                try:
-                                    data = await client.download_media(m, file=bytes)  # RAMga bytes
-                                    if data:
-                                        await client.send_file(
-                                            entity=target_peer,
-                                            file=data,
-                                            caption=text or ""
-                                        )
-                                    else:
-                                        if text:
-                                            await client.send_message(target_peer, text)
-                                except Exception as ee:
-                                    logging.warning(f"Media copy failed, text only: {ee}")
-                                    if text:
-                                        await client.send_message(target_peer, text)
-                            else:
-                                if text:
-                                    await client.send_message(target_peer, text)
-
-                            await asyncio.sleep(POST_DELAY_SECONDS)
-
-                        except FloodWaitError as e:
-                            logging.warning(f"FloodWait (group/manual): {e.seconds}s")
-                            await asyncio.sleep(e.seconds + 5)
-                        except RPCError as e:
-                            logging.error(f"RPCError (group/manual) to {title}: {e}")
-                            break
-                        except Exception as e:
-                            logging.error(f"Manual copy error to {title}: {e}")
-                            continue
+                        logging.error(f"RPCError (group/manual) to {title}: {e}")
+                        break
+                    except Exception as e:
+                        logging.error(f"Manual copy error to {title}: {e}")
+                        continue
 
                 logging.info(f"✅ Done with GROUP {title}. Waiting {GROUP_DELAY_SECONDS} sec.")
                 await asyncio.sleep(GROUP_DELAY_SECONDS)
