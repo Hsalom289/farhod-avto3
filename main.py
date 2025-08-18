@@ -52,7 +52,8 @@ EXCLUDED_TARGETS = [
     "https://t.me/+N9nRAUGPEl43YmFi",
     "https://t.me/Navoiy_1_xona_kvartira",
     "https://t.me/Navoiy_2_xona_kvartira",
-    "https://t.me/Navoiy_3_4_5_xona_kvartira",
+    "https://t.me/Navoiy_3_4_5_xona_kvartira", 
+    "https://t.me/+HclTfLD4W5o0NmNi",
     "https://t.me/Navoiy_ijaraga_kv_uy",
     "https://t.me/Navoiy_hovli_katedj_dacha",
     "https://t.me/Navoiy_uyjoy_savdo",      # << qo'shildi
@@ -364,3 +365,4 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+
