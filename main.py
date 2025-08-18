@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Forward bot (har siklda eski + yangi postlarni aylantiradi; manual copy: text/media/album)
+Forward bot (har siklda eski + yangi postlarni aylantiradi; guruhlarga va shaxsiylarga)
 - Ish vaqti: 10:00–23:00 (Asia/Samarkand, UTC+5)
-- SOURCE kanalni har sikl o‘qib, post/albomlarni guruhlarga manual nusxa qilib yuboradi
-- Telethon eski versiyalarida ham ishlaydi (as_copy YO'Q)
+- SOURCE kanalni har sikl o'qib, post/albomlarni guruhlarga va TARGET_USERS dagi shaxslarga forward qiladi
 """
 
 import asyncio
@@ -30,7 +29,7 @@ from telethon.tl.types import (
 POST_DELAY_SECONDS = 8            # har post/albomdan keyin kutish
 GROUP_DELAY_SECONDS = 30          # har targetdan keyin kutish
 CHECK_EVERY_SECONDS = 20          # sikllar orasida kutish
-REPLAY_LAST_N_GROUPS = 300        # None -> hammasi; tavsiya: 200–500 orasida
+REPLAY_LAST_N_GROUPS = None       # None -> hammasi; masalan 300 qo'ysangiz, faqat oxirgi 300 guruh
 
 # Telegram API credentials (o'zingizniki bilan to'ldiring)
 api_id = 16072756
@@ -41,13 +40,19 @@ session_file = 'session_name.session'
 # Manba kanal
 SOURCE_CHANNEL = "https://t.me/Navoiy_uy_barcha_elonlar_bazasi"
 
-# Guruhlar (majburiy qo'shiladigan username/link’lar)
+# Guruhlar (majburiy qo'shiladigan username’lar)
 ADDITIONAL_GROUPS = [
-    "https://t.me/Navoiy_uy_joy_kvartira_savdosi",
-    "https://t.me/Navoiy_uy_joy_savdosi",
+    "Navoiy_uy_joy_kvartira_bozori",
+    "Navoiy_uy_joy_savdosi"
 ]
 
-# Hech qachon yuborilmaydigan targetlar (kanal/guruh) — manbani ham qo'shib qo'ying
+# Shaxsiy (private) targetlar — username yoki user ID
+TARGET_USERS = [
+    # "@username1",
+    # 123456789,
+]
+
+# Hech qachon yuborilmaydigan targetlar (kanal/guruh)
 EXCLUDED_TARGETS = [
     "https://t.me/Navoiy_uy_barcha_elonlar_bazasi",
     "https://t.me/Navoiy_uy_joy_kv_barcha_elonlar",
@@ -203,8 +208,7 @@ async def get_admin_groups(client: TelegramClient, excluded_ids: set):
     # Majburiy qo'shiladiganlar (faqat guruh bo‘lsa)
     for username in ADDITIONAL_GROUPS:
         try:
-            uname = normalize_channel(username)
-            ent = await client.get_entity(uname)
+            ent = await client.get_entity(username)
             if ent.id in excluded_ids:
                 continue
             if not _is_valid_group(ent):
@@ -213,83 +217,11 @@ async def get_admin_groups(client: TelegramClient, excluded_ids: set):
             if ent.id not in seen:
                 admin_groups.append(ent)
                 seen.add(ent.id)
-                logging.info(f"Added additional target: {getattr(ent,'title',uname)} (id={ent.id})")
+                logging.info(f"Added additional target: {getattr(ent,'title',username)} (id={ent.id})")
         except Exception as e:
             logging.error(f"Error adding target {username}: {e}")
 
     return admin_groups
-
-async def send_msg_group_manually(client: TelegramClient, target_peer, msg_group):
-    """
-    Bitta group (album/yakka) xabarni qo'lda nusxa qilib yuborish.
-    - Agar hammasi media bo'lsa: bitta jo'natishda album (send_file([...])).
-    - Aks holda: elementma-element (matn/send_file).
-    """
-    # Albom holatini tekshirish: barcha elementda media bormi?
-    all_media = all(getattr(m, "media", None) for m in msg_group)
-
-    if all_media and len(msg_group) > 1:
-        files = []
-        for m in msg_group:
-            try:
-                data = await client.download_media(m, file=bytes)  # RAM'ga bytes
-            except Exception as e:
-                data = None
-                logging.warning(f"Album item download failed, skipping media: {e}")
-            if data:
-                files.append(data)
-
-        if files:
-            # Albom caption faqat birinchi faylga qo'yiladi, shuning uchun 1-tekstni caption qilamiz
-            first_text = msg_group[0].text or (msg_group[0].message if hasattr(msg_group[0], 'message') else "")
-            try:
-                await client.send_file(
-                    entity=target_peer,
-                    file=files,          # list -> album
-                    caption=first_text or ""
-                )
-            except Exception as e:
-                logging.error(f"Album send_file failed: {e}")
-        else:
-            # Hech bo'lmasa matnlarni ketma-ket yuboramiz
-            for m in msg_group:
-                text = m.text or (m.message if hasattr(m, 'message') else "")
-                if text:
-                    try:
-                        await client.send_message(target_peer, text)
-                    except Exception as e:
-                        logging.error(f"Album-fallback text send failed: {e}")
-                await asyncio.sleep(POST_DELAY_SECONDS)
-        return
-
-    # Albom emas yoki aralash (matn/media) — elementma-element
-    for m in msg_group:
-        text = m.text or (m.message if hasattr(m, 'message') else "")
-        if getattr(m, "media", None):
-            # Media bor — yuklab, yuboramiz (yuklanmasa faqat matn)
-            try:
-                data = await client.download_media(m, file=bytes)
-                if data:
-                    await client.send_file(target_peer, data, caption=text or "")
-                else:
-                    if text:
-                        await client.send_message(target_peer, text)
-            except Exception as e:
-                logging.warning(f"Media copy failed, sending text only: {e}")
-                if text:
-                    try:
-                        await client.send_message(target_peer, text)
-                    except Exception as e2:
-                        logging.error(f"Text send failed after media error: {e2}")
-        else:
-            # Faqat matn
-            if text:
-                try:
-                    await client.send_message(target_peer, text)
-                except Exception as e:
-                    logging.error(f"Text send failed: {e}")
-
-        await asyncio.sleep(POST_DELAY_SECONDS)
 
 # ====================== MAIN LOOP ======================
 async def main():
@@ -342,30 +274,16 @@ async def main():
                 continue
 
             # 2) Guruh targetlar (admin bo'lganlar + qo'shimcha)
-            if not await ensure_connection(client):
-                await asyncio.sleep(5)
-                continue
-            dialogs = await client(GetDialogsRequest(
-                offset_date=None,
-                offset_id=0,
-                offset_peer=InputPeerEmpty(),
-                limit=200,
-                hash=0
-            ))
             admin_groups = await get_admin_groups(client, excluded_ids)
-            if not admin_groups:
-                logging.warning("No admin groups found. Waiting...")
-                await asyncio.sleep(60)
-                continue
 
-            # 3) GURUH(LAR)GA yuborish (manual copy)
+            # 3) GURUH(LAR)GA forward
             for group in admin_groups:
                 gid = getattr(group, "id", None)
                 if gid in excluded_ids:
                     logging.info(f"Skipped excluded target at send loop: id={gid}")
                     continue
 
-                # Targetni InputPeerga aylantiramiz
+                # Targetni InputPeerga aylantiramiz (Invalid Peer oldini oladi)
                 try:
                     target_peer = await client.get_input_entity(group)
                 except Exception as e:
@@ -373,24 +291,73 @@ async def main():
                     continue
 
                 title = getattr(group, "title", getattr(group, "username", str(gid)))
-                logging.info(f"⬇️ Sending ALL (manual copy) to GROUP {title} (id={gid})...")
+                logging.info(f"⬇️ Forwarding ALL (old+new) to GROUP {title} (id={gid})...")
 
                 for msg_group in source_groups:
+                    message_ids = [m.id for m in msg_group if getattr(m, "id", None)]
+                    if not message_ids:
+                        continue
                     try:
                         if not await ensure_connection(client):
                             continue
-                        await send_msg_group_manually(client, target_peer, msg_group)
+                        await client.forward_messages(
+                            entity=target_peer,   # InputPeer (target group)
+                            messages=message_ids,
+                            from_peer=source_ent  # Entity (source channel)
+                        )
+                        logging.info(f"✅ Forwarded to GROUP {title}: {message_ids}")
+                        await asyncio.sleep(POST_DELAY_SECONDS)
+
                     except FloodWaitError as e:
-                        logging.warning(f"FloodWait (group/manual): {e.seconds}s")
+                        logging.warning(f"FloodWait (group): wait {e.seconds}s")
                         await asyncio.sleep(e.seconds + 5)
                     except RPCError as e:
-                        logging.error(f"RPCError (group/manual) to {title}: {e}")
+                        logging.error(f"RPCError to GROUP {title}: {e}")
                         break
                     except Exception as e:
-                        logging.error(f"Manual copy error to {title}: {e}")
+                        logging.error(f"Error forwarding to GROUP {title}: {e}")
                         continue
 
                 logging.info(f"✅ Done with GROUP {title}. Waiting {GROUP_DELAY_SECONDS} sec.")
+                await asyncio.sleep(GROUP_DELAY_SECONDS)
+
+            # 4) SHAXSIY (PRIVATE) foydalanuvchilarga forward (faqat TARGET_USERS da borlar)
+            for u in TARGET_USERS:
+                try:
+                    user_peer = await client.get_input_entity(u)
+                except Exception as e:
+                    logging.error(f"Private target resolve failed (skip): {u} -> {e}")
+                    continue
+
+                title = str(getattr(user_peer, "user_id", u))
+                logging.info(f"⬇️ Forwarding ALL (old+new) to PRIVATE {title} ...")
+
+                for msg_group in source_groups:
+                    message_ids = [m.id for m in msg_group if getattr(m, "id", None)]
+                    if not message_ids:
+                        continue
+                    try:
+                        if not await ensure_connection(client):
+                            continue
+                        await client.forward_messages(
+                            entity=user_peer,     # private user
+                            messages=message_ids,
+                            from_peer=source_ent
+                        )
+                        logging.info(f"✅ Forwarded to PRIVATE {title}: {message_ids}")
+                        await asyncio.sleep(POST_DELAY_SECONDS)
+
+                    except FloodWaitError as e:
+                        logging.warning(f"FloodWait (private): wait {e.seconds}s")
+                        await asyncio.sleep(e.seconds + 5)
+                    except RPCError as e:
+                        logging.error(f"RPCError to PRIVATE {title}: {e}")
+                        break
+                    except Exception as e:
+                        logging.error(f"Error forwarding to PRIVATE {title}: {e}")
+                        continue
+
+                logging.info(f"✅ Done with PRIVATE {title}. Waiting {GROUP_DELAY_SECONDS} sec.")
                 await asyncio.sleep(GROUP_DELAY_SECONDS)
 
             logging.info(f"🔄 Cycle finished. Re-reading source in {CHECK_EVERY_SECONDS}s ...")
