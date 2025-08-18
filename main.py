@@ -4,6 +4,7 @@ Forward bot (har siklda eski + yangi postlarni aylantiradi)
 - Ish vaqti: 10:00–23:00 (Asia/Samarkand, UTC+5)
 - Har siklda SOURCE kanal to'liq o'qiladi (yangi postlar ro'yxatga qo'shiladi)
 - Barcha (yoki oxirgi N ta) post/albomlar target guruhlarga forward qilinadi
+- EXCLUDE: username/URL va aniq ID bo‘yicha qat’iy blok
 """
 
 import asyncio
@@ -43,7 +44,7 @@ ADDITIONAL_GROUPS = [
     "Navoiy_uy_joy_savdosi"
 ]
 
-# Hech qachon yuborilmaydigan targetlar (channel/group)
+# Hech qachon yuborilmaydigan targetlar (URL yoki @username)
 EXCLUDED_TARGETS = [
     "https://t.me/Navoiy_uy_barcha_elonlar_bazasi",
     "https://t.me/Navoiy_uy_joy_kv_barcha_elonlar",
@@ -54,7 +55,15 @@ EXCLUDED_TARGETS = [
     "https://t.me/Navoiy_3_4_5_xona_kvartira",
     "https://t.me/Navoiy_ijaraga_kv_uy",
     "https://t.me/Navoiy_hovli_katedj_dacha",
+    "https://t.me/Navoiy_uyjoy_savdo",      # << qo'shildi
 ]
+
+# Shaxsiy (username’siz) guruhlar uchun aniq ID bo‘yicha qat’iy blok
+# Masalan: -1001839437480 va hokazo. ID’larni logdan oling.
+EXCLUDED_IDS = {
+    # -1001839437480,
+    # -1002387184511,
+}
 
 # ====================== LOGGING ======================
 logging.basicConfig(
@@ -65,12 +74,12 @@ logging.basicConfig(
 
 # ====================== UTILITIES ======================
 def normalize_channel(value: str) -> str:
-    """URL yoki @username ni username/path ga keltiradi."""
+    """URL yoki @username ni username/path ga keltiradi (kichik harf)."""
     value = value.strip()
     if value.startswith("http"):
         path = urlparse(value).path.strip("/")
-        return path
-    return value.lstrip("@")
+        return path.lower()
+    return value.lstrip("@").lower()
 
 def is_working_time() -> bool:
     """Ish vaqti: 10:00–23:00 (Asia/Samarkand)."""
@@ -90,26 +99,38 @@ async def ensure_connection(client: TelegramClient) -> bool:
         logging.error(f"Reconnect failed: {e}")
         return False
 
-async def resolve_excluded_ids(client: TelegramClient) -> set:
+async def build_excluded_sets(client: TelegramClient):
     """
     EXCLUDED_TARGETS va SOURCE_CHANNEL'ni IDlarga resolve qiladi.
-    Private +invite bo'lsa tashlab yuboriladi.
+    Shuningdek, username/path’larni ham qaytaradi (fallback uchun).
+    Private +invite bo'lsa (joinchat/+), resolve qilinmasa ham username set’da turadi.
     """
-    excluded_ids = set()
-    for item in EXCLUDED_TARGETS + [SOURCE_CHANNEL]:
+    excluded_ids = set(EXCLUDED_IDS)  # aniq ID’lar darrov qo'shiladi
+    excluded_usernames = set()        # lowercased path/usernames
+
+    all_targets = list(EXCLUDED_TARGETS) + [SOURCE_CHANNEL]
+    for item in all_targets:
         try:
-            username_or_path = normalize_channel(item)
-            # Private invite (joinchat/+) -> tashlab yuboramiz (resolve bo'lmaydi)
-            if username_or_path.startswith("+"):
-                logging.warning(f"Skip exclude (private invite not joined): {item}")
+            path = normalize_channel(item)
+            excluded_usernames.add(path)
+
+            # Private invite bo'lsa — resolve qilmasdan skip (agar a'zo bo'lmasangiz baribir forward bo'lmaydi)
+            if path.startswith("+"):
+                logging.warning(f"Skip resolve (private invite not joined): {item}")
                 continue
-            ent = await client.get_entity(username_or_path)
+
+            ent = await client.get_entity(path)
             excluded_ids.add(ent.id)
             title = getattr(ent, "title", getattr(ent, "username", str(ent.id)))
             logging.info(f"[Exclude] {title} (id={ent.id})")
         except Exception as e:
             logging.warning(f"Could not resolve excluded: {item} -> {e}")
-    return excluded_ids
+
+    # Aniq ID’lar ro‘yxatini ham logda ko‘rsatamiz
+    if EXCLUDED_IDS:
+        logging.info(f"[Exclude IDs explicit] {sorted(list(EXCLUDED_IDS))}")
+
+    return excluded_ids, excluded_usernames
 
 def group_messages(messages):
     """
@@ -149,10 +170,19 @@ async def get_all_posts_grouped(client: TelegramClient, limit=100000):
     logging.info(f"Fetched {len(grouped)} post groups from source.")
     return grouped, source_ent
 
-async def get_admin_groups(client: TelegramClient, excluded_ids: set):
+def dialog_username_lower(dialog) -> str:
+    """Dialogdan username/path (lowercase) ni olish (bo'lsa)."""
+    uname = getattr(dialog, "username", None)
+    if uname:
+        return uname.lower()
+    # Channel/Chat turlari uchun .username bo'lmasligi mumkin
+    # Boshqa aniqlash yo'qligi sababli faqat username bo'lsa tekshiramiz.
+    return ""
+
+async def get_admin_groups(client: TelegramClient, excluded_ids: set, excluded_usernames: set):
     """
     Siz admin bo'lgan guruhlar + ADDITIONAL_GROUPS
-    (kanallar/broadcast chetlanadi), excluded_ids bilan filtrlanadi.
+    (kanallar/broadcast chetlanadi), excluded_ids/username bilan filtrlanadi.
     """
     if not await ensure_connection(client):
         return []
@@ -169,14 +199,31 @@ async def get_admin_groups(client: TelegramClient, excluded_ids: set):
     # Men admin bo'lgan chatlar
     for dialog in dialogs.chats:
         try:
+            # Kanal bo‘lsa o‘tkazib yuboramiz
             if getattr(dialog, 'broadcast', False):
-                continue  # kanal emas
+                continue
+
+            # Exclude by ID (qat’iy)
+            if getattr(dialog, "id", None) in excluded_ids:
+                logging.info(f"Skipped excluded (admin list, by id): {getattr(dialog,'title',dialog.id)} (id={dialog.id})")
+                continue
+
+            # Exclude by username/path (fallback)
+            uname = dialog_username_lower(dialog)
+            if uname and uname in excluded_usernames:
+                logging.info(f"Skipped excluded (admin list, by username): {getattr(dialog,'title',dialog.id)} (id={dialog.id})")
+                continue
+
+            # Admin ekanligimizni tekshirish
+            is_admin = False
             if hasattr(dialog, 'admin_rights') and dialog.admin_rights:
-                if dialog.id not in excluded_ids:
-                    admin_groups.append(dialog)
-                    logging.info(f"Admin target: {getattr(dialog,'title',dialog.id)} (id={dialog.id})")
-                else:
-                    logging.info(f"Skipped excluded (admin): {getattr(dialog,'title',dialog.id)} (id={dialog.id})")
+                is_admin = True
+            if getattr(dialog, 'creator', False):
+                is_admin = True
+
+            if is_admin:
+                admin_groups.append(dialog)
+                logging.info(f"Admin target: {getattr(dialog,'title',dialog.id)} (id={dialog.id})")
         except Exception:
             continue
 
@@ -187,18 +234,25 @@ async def get_admin_groups(client: TelegramClient, excluded_ids: set):
             if getattr(group, 'broadcast', False):
                 logging.info(f"Skip additional (it's a channel): {group_username}")
                 continue
-            if group.id not in excluded_ids:
-                admin_groups.append(group)
-                logging.info(f"Added additional target: {getattr(group,'title',group_username)} (id={group.id})")
-            else:
-                logging.info(f"Skipped excluded (additional): {getattr(group,'title',group_username)} (id={group.id})")
+
+            # Exclude tekshiruvlari
+            if getattr(group, "id", None) in excluded_ids:
+                logging.info(f"Skipped excluded (additional, by id): {getattr(group,'title',group_username)} (id={group.id})")
+                continue
+            g_uname = getattr(group, "username", None)
+            if g_uname and g_uname.lower() in excluded_usernames:
+                logging.info(f"Skipped excluded (additional, by username): {getattr(group,'title',group_username)} (id={group.id})")
+                continue
+
+            admin_groups.append(group)
+            logging.info(f"Added additional target: {getattr(group,'title',group_username)} (id={group.id})")
         except Exception as e:
             logging.error(f"Error adding target {group_username}: {e}")
 
     # Dublikatlarni ID bo‘yicha yo‘qotamiz
     uniq = {}
     for g in admin_groups:
-        uniq[g.id] = g
+        uniq[getattr(g, "id", id(g))] = g
     return list(uniq.values())
 
 # ====================== MAIN LOOP ======================
@@ -234,8 +288,8 @@ async def main():
         return
 
     try:
-        excluded_ids = await resolve_excluded_ids(client)
-        logging.info(f"Excluded IDs count: {len(excluded_ids)}")
+        excluded_ids, excluded_usernames = await build_excluded_sets(client)
+        logging.info(f"Excluded IDs count: {len(excluded_ids)} | Excluded usernames count: {len(excluded_usernames)}")
 
         while True:
             # Ish vaqti nazorati
@@ -251,21 +305,26 @@ async def main():
                 await asyncio.sleep(CHECK_EVERY_SECONDS)
                 continue
 
-            # 2) Targetlar (admin bo'lganlar + qo'shimcha)
-            admin_groups = await get_admin_groups(client, excluded_ids)
+            # 2) Targetlar (admin bo'lganlar + qo'shimcha), exclude bilan filtrlangan
+            admin_groups = await get_admin_groups(client, excluded_ids, excluded_usernames)
             if not admin_groups:
-                logging.warning("No admin groups found. Waiting...")
+                logging.warning("No admin groups found after exclude. Waiting...")
                 await asyncio.sleep(60)
                 continue
 
             # 3) Barcha (yoki oxirgi N) guruhlarni har bir targetga forward qilish
             for group in admin_groups:
-                if getattr(group, "id", None) in excluded_ids:
-                    logging.info(f"Skipped excluded target at send loop: id={group.id}")
+                gid = getattr(group, "id", None)
+                gtitle = getattr(group, "title", getattr(group, "username", str(gid)))
+                guname = getattr(group, "username", None)
+                guname_l = guname.lower() if guname else ""
+
+                # Oxirgi himoya: forward oldidan ham exclude tekshiruv
+                if gid in excluded_ids or (guname_l and guname_l in excluded_usernames):
+                    logging.info(f"Skipped excluded at send loop: {gtitle} (id={gid})")
                     continue
 
-                title = getattr(group, "title", getattr(group, "username", str(group.id)))
-                logging.info(f"⬇️ Forwarding ALL (old+new) to {title} (id={group.id})...")
+                logging.info(f"⬇️ Forwarding ALL (old+new) to {gtitle} (id={gid})...")
 
                 for msg_group in source_groups:
                     message_ids = [m.id for m in msg_group if getattr(m, "id", None)]
@@ -280,16 +339,16 @@ async def main():
                             message_ids,  # IDs of messages in the group
                             source_ent    # from_peer: entity
                         )
-                        logging.info(f"✅ Forwarded to {title}: {message_ids}")
+                        logging.info(f"✅ Forwarded to {gtitle}: {message_ids}")
                         await asyncio.sleep(POST_DELAY_SECONDS)
                     except FloodWaitError as e:
                         logging.warning(f"FloodWait: Waiting {e.seconds} seconds")
                         await asyncio.sleep(e.seconds + 5)
                     except Exception as e:
-                        logging.error(f"Error forwarding to {title}: {e}")
+                        logging.error(f"Error forwarding to {gtitle}: {e}")
                         continue
 
-                logging.info(f"✅ Done with {title}. Waiting {GROUP_DELAY_SECONDS} sec.")
+                logging.info(f"✅ Done with {gtitle}. Waiting {GROUP_DELAY_SECONDS} sec.")
                 await asyncio.sleep(GROUP_DELAY_SECONDS)
 
             logging.info(f"🔄 Cycle finished. Re-reading source in {CHECK_EVERY_SECONDS}s ...")
