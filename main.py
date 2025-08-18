@@ -48,6 +48,7 @@ ADDITIONAL_GROUPS = [
 EXCLUDED_TARGETS = [
     "https://t.me/Navoiy_uy_barcha_elonlar_bazasi",
     "https://t.me/Navoiy_uy_joy_kv_barcha_elonlar",
+    "https://t.me/+N9nRAUGPEl43YmFi" , 
     "https://t.me/+6e1vw3QlFLg1Zjcy",
     "https://t.me/+N9nRAUGPEl43YmFi",
     "https://t.me/Navoiy_1_xona_kvartira",
@@ -365,4 +366,5 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+
 
