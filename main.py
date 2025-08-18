@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-Forward bot (har siklda eski + yangi postlarni aylantiradi; guruhlarga va shaxsiylarga)
+Forward bot (har siklda eski + yangi postlarni aylantiradi)
 - Ish vaqti: 10:00–23:00 (Asia/Samarkand, UTC+5)
-- SOURCE kanalni har sikl o'qib, post/albomlarni guruhlarga va TARGET_USERS dagi shaxslarga forward qiladi
+- Har siklda SOURCE kanal to'liq o'qiladi (yangi postlar ro'yxatga qo'shiladi)
+- Barcha (yoki oxirgi N ta) post/albomlar target guruhlarga forward qilinadi
 """
 
 import asyncio
@@ -17,19 +18,15 @@ from telethon.errors import (
     SessionPasswordNeededError,
     PhoneNumberBannedError,
     SessionRevokedError,
-    RPCError,
 )
 from telethon.tl.functions.messages import GetDialogsRequest
-from telethon.tl.types import (
-    InputPeerEmpty,
-    Channel, Chat, ChannelForbidden, ChatForbidden
-)
+from telethon.tl.types import InputPeerEmpty
 
 # ====================== SETTINGS ======================
 POST_DELAY_SECONDS = 8            # har post/albomdan keyin kutish
-GROUP_DELAY_SECONDS = 30          # har targetdan keyin kutish
-CHECK_EVERY_SECONDS = 20          # sikllar orasida kutish
-REPLAY_LAST_N_GROUPS = None       # None -> hammasi; masalan 300 qo'ysangiz, faqat oxirgi 300 guruh
+GROUP_DELAY_SECONDS = 30          # har target guruhdan keyin kutish
+CHECK_EVERY_SECONDS = 20          # sikllar orasidagi kutish (kanalni qayta o‘qishdan oldin)
+REPLAY_LAST_N_GROUPS = None       # None -> hammasi; masalan 300 qo'ysangiz, faqat oxirgi 300 ta guruh
 
 # Telegram API credentials (o'zingizniki bilan to'ldiring)
 api_id = 16072756
@@ -40,19 +37,13 @@ session_file = 'session_name.session'
 # Manba kanal
 SOURCE_CHANNEL = "https://t.me/Navoiy_uy_barcha_elonlar_bazasi"
 
-# Guruhlar (majburiy qo'shiladigan username’lar)
+# Majburiy target guruhlar (username)
 ADDITIONAL_GROUPS = [
     "Navoiy_uy_joy_kvartira_bozori",
     "Navoiy_uy_joy_savdosi"
 ]
 
-# Shaxsiy (private) targetlar — username yoki user ID
-TARGET_USERS = [
-    # "@username1",
-    # 123456789,
-]
-
-# Hech qachon yuborilmaydigan targetlar (kanal/guruh)
+# Hech qachon yuborilmaydigan targetlar (channel/group)
 EXCLUDED_TARGETS = [
     "https://t.me/Navoiy_uy_barcha_elonlar_bazasi",
     "https://t.me/Navoiy_uy_joy_kv_barcha_elonlar",
@@ -102,13 +93,14 @@ async def ensure_connection(client: TelegramClient) -> bool:
 async def resolve_excluded_ids(client: TelegramClient) -> set:
     """
     EXCLUDED_TARGETS va SOURCE_CHANNEL'ni IDlarga resolve qiladi.
-    Private `+invite` bo'lsa tashlab yuboriladi.
+    Private +invite bo'lsa tashlab yuboriladi.
     """
     excluded_ids = set()
     for item in EXCLUDED_TARGETS + [SOURCE_CHANNEL]:
         try:
             username_or_path = normalize_channel(item)
-            if username_or_path.startswith("+"):  # private invite
+            # Private invite (joinchat/+) -> tashlab yuboramiz (resolve bo'lmaydi)
+            if username_or_path.startswith("+"):
                 logging.warning(f"Skip exclude (private invite not joined): {item}")
                 continue
             ent = await client.get_entity(username_or_path)
@@ -128,7 +120,7 @@ def group_messages(messages):
     for msg in messages:
         if not getattr(msg, "id", None):
             continue
-        key = msg.grouped_id if getattr(msg, "grouped_id", None) else msg.id
+        key = msg.grouped_id if msg.grouped_id else msg.id
         grouped.setdefault(key, []).append(msg)
 
     out = []
@@ -139,37 +131,23 @@ def group_messages(messages):
 async def get_all_posts_grouped(client: TelegramClient, limit=100000):
     """
     SOURCE kanalidan barcha xabarlarni olib, albom/oddiy bo'yicha guruhlab qaytaradi.
-    from_peer sifatida **entity** qaytaradi.
+    from_peer sifatida **entity** qaytadi.
     """
     if not await ensure_connection(client):
         return [], None
 
     source_username = normalize_channel(SOURCE_CHANNEL)
     source_ent = await client.get_entity(source_username)
+
     messages = await client.get_messages(source_ent, limit=limit)  # entity bilan
     grouped = group_messages(messages)
 
-    # Floodni kamaytirish: faqat oxirgi N ta guruhni aylantirish
+    # Floodni yengillashtirish: faqat oxirgi N ta guruhni aylantirish
     if isinstance(REPLAY_LAST_N_GROUPS, int) and REPLAY_LAST_N_GROUPS > 0:
         grouped = grouped[-REPLAY_LAST_N_GROUPS:]
 
     logging.info(f"Fetched {len(grouped)} post groups from source.")
     return grouped, source_ent
-
-def _is_valid_group(ent) -> bool:
-    """
-    Faqat guruhlarni qoldiramiz:
-    - Channel with megagroup=True  (supergroup)
-    - Chat (basic group)
-    Kanal (broadcast), user/bot, forbidden turlari chiqarib tashlanadi.
-    """
-    if isinstance(ent, (ChannelForbidden, ChatForbidden)):
-        return False
-    if isinstance(ent, Channel):
-        return bool(getattr(ent, 'megagroup', False))
-    if isinstance(ent, Chat):
-        return True
-    return False
 
 async def get_admin_groups(client: TelegramClient, excluded_ids: set):
     """
@@ -188,40 +166,40 @@ async def get_admin_groups(client: TelegramClient, excluded_ids: set):
     ))
 
     admin_groups = []
-    seen = set()
-
     # Men admin bo'lgan chatlar
-    for ent in dialogs.chats:
+    for dialog in dialogs.chats:
         try:
-            if ent.id in excluded_ids:
-                continue
-            if not _is_valid_group(ent):
-                continue
-            if hasattr(ent, 'admin_rights') and ent.admin_rights:
-                if ent.id not in seen:
-                    admin_groups.append(ent)
-                    seen.add(ent.id)
-                    logging.info(f"Admin target: {getattr(ent,'title',ent.id)} (id={ent.id})")
+            if getattr(dialog, 'broadcast', False):
+                continue  # kanal emas
+            if hasattr(dialog, 'admin_rights') and dialog.admin_rights:
+                if dialog.id not in excluded_ids:
+                    admin_groups.append(dialog)
+                    logging.info(f"Admin target: {getattr(dialog,'title',dialog.id)} (id={dialog.id})")
+                else:
+                    logging.info(f"Skipped excluded (admin): {getattr(dialog,'title',dialog.id)} (id={dialog.id})")
         except Exception:
             continue
 
-    # Majburiy qo'shiladiganlar (faqat guruh bo‘lsa)
-    for username in ADDITIONAL_GROUPS:
+    # Majburiy qo'shiladiganlar
+    for group_username in ADDITIONAL_GROUPS:
         try:
-            ent = await client.get_entity(username)
-            if ent.id in excluded_ids:
+            group = await client.get_entity(group_username)
+            if getattr(group, 'broadcast', False):
+                logging.info(f"Skip additional (it's a channel): {group_username}")
                 continue
-            if not _is_valid_group(ent):
-                logging.info(f"Skip additional (not a group): {username}")
-                continue
-            if ent.id not in seen:
-                admin_groups.append(ent)
-                seen.add(ent.id)
-                logging.info(f"Added additional target: {getattr(ent,'title',username)} (id={ent.id})")
+            if group.id not in excluded_ids:
+                admin_groups.append(group)
+                logging.info(f"Added additional target: {getattr(group,'title',group_username)} (id={group.id})")
+            else:
+                logging.info(f"Skipped excluded (additional): {getattr(group,'title',group_username)} (id={group.id})")
         except Exception as e:
-            logging.error(f"Error adding target {username}: {e}")
+            logging.error(f"Error adding target {group_username}: {e}")
 
-    return admin_groups
+    # Dublikatlarni ID bo‘yicha yo‘qotamiz
+    uniq = {}
+    for g in admin_groups:
+        uniq[g.id] = g
+    return list(uniq.values())
 
 # ====================== MAIN LOOP ======================
 async def main():
@@ -266,32 +244,28 @@ async def main():
                 await asyncio.sleep(60)
                 continue
 
-            # 1) SOURCE (eski + yangi) guruhlar
+            # 1) Har siklda SOURCE ni to'liq o‘qish (eski + yangi hammasi)
             source_groups, source_ent = await get_all_posts_grouped(client)
             if not source_groups or not source_ent:
                 logging.info("No source groups found. Waiting...")
                 await asyncio.sleep(CHECK_EVERY_SECONDS)
                 continue
 
-            # 2) Guruh targetlar (admin bo'lganlar + qo'shimcha)
+            # 2) Targetlar (admin bo'lganlar + qo'shimcha)
             admin_groups = await get_admin_groups(client, excluded_ids)
+            if not admin_groups:
+                logging.warning("No admin groups found. Waiting...")
+                await asyncio.sleep(60)
+                continue
 
-            # 3) GURUH(LAR)GA forward
+            # 3) Barcha (yoki oxirgi N) guruhlarni har bir targetga forward qilish
             for group in admin_groups:
-                gid = getattr(group, "id", None)
-                if gid in excluded_ids:
-                    logging.info(f"Skipped excluded target at send loop: id={gid}")
+                if getattr(group, "id", None) in excluded_ids:
+                    logging.info(f"Skipped excluded target at send loop: id={group.id}")
                     continue
 
-                # Targetni InputPeerga aylantiramiz (Invalid Peer oldini oladi)
-                try:
-                    target_peer = await client.get_input_entity(group)
-                except Exception as e:
-                    logging.error(f"Target resolve failed (skip): {getattr(group,'title',gid)} -> {e}")
-                    continue
-
-                title = getattr(group, "title", getattr(group, "username", str(gid)))
-                logging.info(f"⬇️ Forwarding ALL (old+new) to GROUP {title} (id={gid})...")
+                title = getattr(group, "title", getattr(group, "username", str(group.id)))
+                logging.info(f"⬇️ Forwarding ALL (old+new) to {title} (id={group.id})...")
 
                 for msg_group in source_groups:
                     message_ids = [m.id for m in msg_group if getattr(m, "id", None)]
@@ -300,64 +274,22 @@ async def main():
                     try:
                         if not await ensure_connection(client):
                             continue
+                        # MUHIM: from_peer sifatida entity (source_ent) berilmoqda
                         await client.forward_messages(
-                            entity=target_peer,   # InputPeer (target group)
-                            messages=message_ids,
-                            from_peer=source_ent  # Entity (source channel)
+                            group,        # target entity
+                            message_ids,  # IDs of messages in the group
+                            source_ent    # from_peer: entity
                         )
-                        logging.info(f"✅ Forwarded to GROUP {title}: {message_ids}")
+                        logging.info(f"✅ Forwarded to {title}: {message_ids}")
                         await asyncio.sleep(POST_DELAY_SECONDS)
-
                     except FloodWaitError as e:
-                        logging.warning(f"FloodWait (group): wait {e.seconds}s")
+                        logging.warning(f"FloodWait: Waiting {e.seconds} seconds")
                         await asyncio.sleep(e.seconds + 5)
-                    except RPCError as e:
-                        logging.error(f"RPCError to GROUP {title}: {e}")
-                        break
                     except Exception as e:
-                        logging.error(f"Error forwarding to GROUP {title}: {e}")
+                        logging.error(f"Error forwarding to {title}: {e}")
                         continue
 
-                logging.info(f"✅ Done with GROUP {title}. Waiting {GROUP_DELAY_SECONDS} sec.")
-                await asyncio.sleep(GROUP_DELAY_SECONDS)
-
-            # 4) SHAXSIY (PRIVATE) foydalanuvchilarga forward (faqat TARGET_USERS da borlar)
-            for u in TARGET_USERS:
-                try:
-                    user_peer = await client.get_input_entity(u)
-                except Exception as e:
-                    logging.error(f"Private target resolve failed (skip): {u} -> {e}")
-                    continue
-
-                title = str(getattr(user_peer, "user_id", u))
-                logging.info(f"⬇️ Forwarding ALL (old+new) to PRIVATE {title} ...")
-
-                for msg_group in source_groups:
-                    message_ids = [m.id for m in msg_group if getattr(m, "id", None)]
-                    if not message_ids:
-                        continue
-                    try:
-                        if not await ensure_connection(client):
-                            continue
-                        await client.forward_messages(
-                            entity=user_peer,     # private user
-                            messages=message_ids,
-                            from_peer=source_ent
-                        )
-                        logging.info(f"✅ Forwarded to PRIVATE {title}: {message_ids}")
-                        await asyncio.sleep(POST_DELAY_SECONDS)
-
-                    except FloodWaitError as e:
-                        logging.warning(f"FloodWait (private): wait {e.seconds}s")
-                        await asyncio.sleep(e.seconds + 5)
-                    except RPCError as e:
-                        logging.error(f"RPCError to PRIVATE {title}: {e}")
-                        break
-                    except Exception as e:
-                        logging.error(f"Error forwarding to PRIVATE {title}: {e}")
-                        continue
-
-                logging.info(f"✅ Done with PRIVATE {title}. Waiting {GROUP_DELAY_SECONDS} sec.")
+                logging.info(f"✅ Done with {title}. Waiting {GROUP_DELAY_SECONDS} sec.")
                 await asyncio.sleep(GROUP_DELAY_SECONDS)
 
             logging.info(f"🔄 Cycle finished. Re-reading source in {CHECK_EVERY_SECONDS}s ...")
